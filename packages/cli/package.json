@@ -3,5 +3,8 @@
   "version": "0.0.1",
   "description": "Library toolkit based on rollup.",
   "main": "lib/index.js",
-  "license": "MIT"
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  }
 }

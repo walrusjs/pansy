@@ -7,6 +7,7 @@
   "author": "wangxingkang <wang_xingkang@qq.com>",
   "license": "MIT",
   "scripts": {
+    "bootstrap": "yarn && lerna bootstrap",
     "version": "ts-node scripts/genChangelog.ts git add CHANGELOG.md"
   },
   "devDependencies": {
@@ -16,5 +17,9 @@
     "lerna-changelog": "^0.8.2",
     "ts-node": "^8.4.1",
     "typescript": "^3.6.4"
-  }
+  },
+  "workspaces": [
+    "packages/*",
+    "examples/*"
+  ]
 }

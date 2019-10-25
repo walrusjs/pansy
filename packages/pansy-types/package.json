@@ -3,5 +3,8 @@
   "version": "0.0.1",
   "description": "Type definitions for pansy.",
   "types": "index",
-  "license": "MIT"
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  }
 }
