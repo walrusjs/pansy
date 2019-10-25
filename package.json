@@ -1,0 +1,20 @@
+{
+  "name": "@pansy/workspace",
+  "version": "0.0.1",
+  "description": "Library toolkit based on rollup.",
+  "main": "lib/index.js",
+  "repository": "git@github.com:walrus-plus/pansy.git",
+  "author": "wangxingkang <wang_xingkang@qq.com>",
+  "license": "MIT",
+  "scripts": {
+    "version": "ts-node scripts/genChangelog.ts git add CHANGELOG.md"
+  },
+  "devDependencies": {
+    "@walrus/cli": "^0.2.2",
+    "execa": "^3.2.0",
+    "lerna": "^3.18.3",
+    "lerna-changelog": "^0.8.2",
+    "ts-node": "^8.4.1",
+    "typescript": "^3.6.4"
+  }
+}

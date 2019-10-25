@@ -1,0 +1,7 @@
+{
+  "name": "@pansy/types",
+  "version": "0.0.1",
+  "description": "Type definitions for pansy.",
+  "types": "index",
+  "license": "MIT"
+}
