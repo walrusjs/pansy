@@ -1,18 +1,7 @@
 import './polyfills';
 import path from 'path';
-import {
-  chalk,
-  lodash,
-  readPkg,
-  Logger,
-  configLoader
-} from '@walrus/shared-utils';
-import {
-  rollup,
-  watch,
-  Plugin as RollupPlugin,
-  ModuleFormat as RollupFormat
-} from 'rollup';
+import { rollup, watch } from 'rollup';
+import { lodash, readPkg, configLoader} from '@walrus/shared-utils';
 import {
   Config,
   Options,
@@ -190,7 +179,7 @@ class Builder {
     } else {
       format = ['cjs']
     }
-    const formats = format
+    const formats = format;
 
     for (const source of sources) {
       for (const format of formats) {
