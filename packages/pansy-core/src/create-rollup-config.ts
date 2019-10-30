@@ -1,4 +1,9 @@
-import { lodash, readPkg, chalk } from '@walrus/shared-utils';
+import path from 'path';
+import {
+  lodash,
+  readPkg,
+  chalk
+} from '@walrus/shared-utils';
 import {
   Env,
   NormalizedConfig,
@@ -24,7 +29,6 @@ import getBanner from './utils/get-banner';
 import { Assets, Asset } from './';
 import logger from './logger';
 import { getDefaultFileName } from './utils';
-import path from "path";
 
 type PluginFactory = (opts: any) => RollupPlugin;
 type GetPlugin = (name: string) => PluginFactory | Promise<PluginFactory>;

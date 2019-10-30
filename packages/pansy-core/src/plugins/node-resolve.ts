@@ -1,4 +1,4 @@
-import builtinModules from 'builtin-modules'
+import builtinModules from 'builtin-modules';
 import { NormalizedConfig } from '@pansy/types'
 import isExternal from '../utils/is-external'
 import logger from '../logger';

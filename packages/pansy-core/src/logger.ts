@@ -6,7 +6,7 @@ interface Options {
 }
 
 class Logger {
-  options: Options
+  options: Options;
 
   constructor(options?: Options) {
     this.options = options || {}

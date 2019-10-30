@@ -1,4 +1,4 @@
-import babel from 'rollup-plugin-babel'
+import babel from 'rollup-plugin-babel';
 import preset from '../babel/preset'
 import { BabelPresetOptions } from '@pansy/types'
 
