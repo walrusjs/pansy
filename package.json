@@ -1,6 +1,6 @@
 {
   "name": "@pansy/workspace",
-  "version": "0.0.1",
+  "private": true,
   "description": "Library toolkit based on rollup.",
   "main": "lib/index.js",
   "repository": "git@github.com:walrus-plus/pansy.git",
@@ -8,6 +8,7 @@
   "license": "MIT",
   "scripts": {
     "bootstrap": "yarn && lerna bootstrap",
+    "test": "walrus test",
     "version": "ts-node scripts/genChangelog.ts git add CHANGELOG.md"
   },
   "devDependencies": {
