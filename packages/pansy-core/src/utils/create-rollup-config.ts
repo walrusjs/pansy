@@ -15,13 +15,13 @@ import formatTime from 'pretty-ms';
 import boxen from 'boxen';
 import stringWidth from 'string-width';
 import textTable from 'text-table';
-import nodeResolvePlugin from './plugins/node-resolve';
-import progressPlugin from './plugins/progress';
-import isExternal from './utils/is-external';
-import getBanner from './utils/get-banner';
-import { Assets, Asset } from './';
-import logger from './logger';
-import { getDefaultFileName } from './utils';
+import nodeResolvePlugin from '../plugins/node-resolve';
+import progressPlugin from '../plugins/progress';
+import isExternal from './is-external';
+import getBanner from './get-banner';
+import { Assets, Asset } from '../index';
+import logger from '../logger';
+import { getDefaultFileName } from './index';
 
 type PluginFactory = (opts: any) => RollupPlugin;
 type GetPlugin = (name: string) => PluginFactory | Promise<PluginFactory>;
@@ -70,11 +70,11 @@ async function printAssets(assets: Assets, title: string) {
   );
 }
 
-export default async (
+export default async function createRollupConfig (
   rootDir: string,
   pkg: readPkg.PackageJson,
   rollupConfigInput: RollupConfigInput
-): Promise<RollupConfig> => {
+): Promise<RollupConfig> {
   const { source, format, title, context, assets, config } = rollupConfigInput;
 
   const minify =
@@ -241,7 +241,7 @@ export default async (
 
     const plugin =
       name === 'babel'
-        ? import('./plugins/babel').then((res) => res.default)
+        ? import('../plugins/babel').then((res) => res.default)
         : name === 'node-resolve'
         ? nodeResolvePlugin
         : name === 'progress'

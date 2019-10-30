@@ -4,7 +4,19 @@
   "description": "Library toolkit based on rollup.",
   "main": "lib/index.js",
   "license": "MIT",
+  "scripts": {
+    "build": "rm -rf dist && bili"
+  },
+  "dependencies": {
+    "@pansy/core": "^0.0.1",
+    "cac": "^6.5.3",
+    "require-so-slow": "^1.2.0",
+    "v8-compile-cache": "^2.1.0"
+  },
   "publishConfig": {
     "access": "public"
+  },
+  "devDependencies": {
+    "bili": "^4.8.1"
   }
 }

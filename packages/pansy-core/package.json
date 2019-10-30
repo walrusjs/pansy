@@ -1,8 +1,12 @@
 {
   "name": "@pansy/core",
   "version": "0.0.1",
-  "main": "./lib/index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "license": "MIT",
+  "scripts": {
+    "build": "rm -rf dist && bili"
+  },
   "dependencies": {
     "@babel/core": "^7.6.4",
     "@babel/plugin-proposal-object-rest-spread": "^7.6.2",
@@ -44,6 +48,7 @@
     "@types/pretty-bytes": "^5.2.0",
     "@types/pretty-ms": "^5.0.1",
     "@types/slash": "^3.0.0",
-    "@types/string-width": "^4.0.1"
+    "@types/string-width": "^4.0.1",
+    "bili": "^4.8.1"
   }
 }

@@ -2,7 +2,7 @@ import './polyfills';
 import * as path from 'path';
 import waterfall from 'p-waterfall';
 import { rollup, watch } from 'rollup';
-import { lodash, readPkg, configLoader } from '@walrus/shared-utils';
+import {lodash, readPkg, configLoader, chalk} from '@walrus/shared-utils';
 import {
   Config,
   Options,
@@ -13,7 +13,7 @@ import {
   ConfigEntryObject
 } from '@pansy/types';
 import logger from './logger';
-import createRollupConfig from './create-rollup-config';
+import createRollupConfig from './utils/create-rollup-config';
 import spinner from './spinner';
 
 export interface Asset {
@@ -264,6 +264,14 @@ class Builder {
         err.message = `You must supply output.moduleName option or use --module-name <name> flag for UMD bundles`;
       }
       throw err;
+    }
+  }
+
+  handleError = (err: any) => {
+    if (err.stack) {
+      console.error();
+      console.error(chalk.bold(chalk.red('Stack Trace:')))
+      console.error(chalk.dim(err.stack))
     }
   }
 }

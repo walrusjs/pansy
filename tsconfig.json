@@ -1,16 +1,17 @@
 {
   "compilerOptions": {
-    "target": "es2017",
-    "module": "esnext",
-    "lib": [
-      "es2017"
-    ],
-    "outDir": "lib",
     "strict": true,
-    "noImplicitAny": true,
-    "strictNullChecks": true,
-    "alwaysStrict": true,
+    "target": "esnext",
+    "module": "esnext",
     "moduleResolution": "node",
+    "declaration": true,
+    "removeComments": false,
+    "newLine": "LF",
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "lib": [
+      "esnext"
+    ],
     "esModuleInterop": true
   }
 }
