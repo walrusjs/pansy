@@ -7,9 +7,5 @@
     "moduleResolution": "node",
     "jsx": "react"
   },
-  "exclude": [
-    "node_modules",
-    "build",
-    "scripts"
-  ]
+  "exclude": ["node_modules", "build", "scripts"]
 }
