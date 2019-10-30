@@ -1,4 +1,5 @@
-import slash from 'slash';
+// @ts-ignore
+import * as slash from 'slash';
 import { lodash } from '@walrus/shared-utils';
 import { Externals } from '@pansy/types';
 

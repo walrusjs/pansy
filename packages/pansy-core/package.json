@@ -1,11 +1,11 @@
 {
   "name": "@pansy/core",
   "version": "0.0.1",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "license": "MIT",
   "scripts": {
-    "build": "rm -rf dist && bili"
+    "build": "father-build"
   },
   "dependencies": {
     "@babel/core": "^7.6.4",
@@ -49,6 +49,6 @@
     "@types/pretty-ms": "^5.0.1",
     "@types/slash": "^3.0.0",
     "@types/string-width": "^4.0.1",
-    "bili": "^4.8.1"
+    "father-build": "^1.14.0"
   }
 }

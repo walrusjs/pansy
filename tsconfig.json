@@ -1,17 +1,15 @@
 {
   "compilerOptions": {
-    "strict": true,
-    "target": "esnext",
-    "module": "esnext",
-    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
     "declaration": true,
-    "removeComments": false,
-    "newLine": "LF",
-    "skipLibCheck": true,
-    "sourceMap": true,
-    "lib": [
-      "esnext"
-    ],
-    "esModuleInterop": true
-  }
+    "module": "esnext",
+    "target": "esnext",
+    "moduleResolution": "node",
+    "jsx": "react"
+  },
+  "exclude": [
+    "node_modules",
+    "build",
+    "scripts"
+  ]
 }

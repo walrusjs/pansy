@@ -16,11 +16,11 @@ class Logger {
     Object.assign(this.options, options);
   }
 
-  get isDebug() {
+  isDebug() {
     return this.options.logLevel === 'verbose';
   }
 
-  get isQuiet() {
+  isQuiet() {
     return this.options.logLevel === 'quiet';
   }
 

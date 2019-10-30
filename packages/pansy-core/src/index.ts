@@ -2,7 +2,7 @@ import './polyfills';
 import * as path from 'path';
 import waterfall from 'p-waterfall';
 import { rollup, watch } from 'rollup';
-import {lodash, readPkg, configLoader, chalk} from '@walrus/shared-utils';
+import { lodash, readPkg, configLoader, chalk } from '@walrus/shared-utils';
 import {
   Config,
   Options,
@@ -270,10 +270,10 @@ class Builder {
   handleError = (err: any) => {
     if (err.stack) {
       console.error();
-      console.error(chalk.bold(chalk.red('Stack Trace:')))
-      console.error(chalk.dim(err.stack))
+      console.error(chalk.bold(chalk.red('Stack Trace:')));
+      console.error(chalk.dim(err.stack));
     }
-  }
+  };
 }
 
 export default Builder;

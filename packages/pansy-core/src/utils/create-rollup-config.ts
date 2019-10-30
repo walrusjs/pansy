@@ -9,10 +9,11 @@ import {
   RollupConfig
 } from '@pansy/types';
 import { Plugin as RollupPlugin, ModuleFormat as RollupFormat } from 'rollup';
-import resolveFrom from 'resolve-from';
-import prettyBytes from 'pretty-bytes';
-import formatTime from 'pretty-ms';
-import boxen from 'boxen';
+import * as resolveFrom from 'resolve-from';
+import * as prettyBytes from 'pretty-bytes';
+import * as formatTime from 'pretty-ms';
+import * as boxen from 'boxen';
+import * as gzipSize from 'gzip-size';
 import stringWidth from 'string-width';
 import textTable from 'text-table';
 import nodeResolvePlugin from '../plugins/node-resolve';
@@ -50,8 +51,7 @@ function localRequire(
   return resolved && require(resolved);
 }
 
-async function printAssets(assets: Assets, title: string) {
-  const gzipSize = await import('gzip-size').then((res) => res.default);
+async function printAssets(assets: any, title: string) {
   const table = await Promise.all(
     [...assets.keys()].map(async (relative) => {
       const asset = assets.get(relative) as Asset;
@@ -70,7 +70,7 @@ async function printAssets(assets: Assets, title: string) {
   );
 }
 
-export default async function createRollupConfig (
+export default async function createRollupConfig(
   rootDir: string,
   pkg: readPkg.PackageJson,
   rollupConfigInput: RollupConfigInput
@@ -282,11 +282,12 @@ export default async function createRollupConfig (
           const absolute = outputOptions.dir && path.resolve(outputOptions.dir, fileName);
           if (absolute) {
             const relative = path.relative(process.cwd(), absolute);
+
+            const source = file.isAsset ? file.source.toString() : file.code;
+
             assets.set(relative, {
               absolute,
-              get source() {
-                return file.isAsset ? file.source.toString() : file.code;
-              }
+              source
             });
           }
         }
@@ -354,4 +355,4 @@ export default async function createRollupConfig (
       sourcemapExcludeSources: config.output.sourceMapExcludeSources
     }
   };
-};
+}

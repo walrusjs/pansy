@@ -15,8 +15,5 @@
   },
   "publishConfig": {
     "access": "public"
-  },
-  "devDependencies": {
-    "bili": "^4.8.1"
   }
 }
