@@ -1,25 +1,20 @@
 import builtinModules from 'builtin-modules';
-import { NormalizedConfig } from '@pansy/types'
-import isExternal from '../utils/is-external'
+import { NormalizedConfig } from '@pansy/types';
+import isExternal from '../utils/is-external';
 import logger from '../logger';
 
 interface Options {
-  rootDir: string
-  bundleNodeModules?: boolean | string[]
-  externals: NormalizedConfig['externals']
-  browser: boolean
+  rootDir: string;
+  bundleNodeModules?: boolean | string[];
+  externals: NormalizedConfig['externals'];
+  browser: boolean;
 }
 
 export default (options: Options) => {
   const plugin = require('rollup-plugin-node-resolve')({
     extensions: ['.js', '.json', '.jsx', '.ts', '.tsx'],
     preferBuiltins: true,
-    mainFields: [
-      options.browser && 'browser',
-      'module',
-      'jsnext:main',
-      'main'
-    ].filter(Boolean)
+    mainFields: [options.browser && 'browser', 'module', 'jsnext:main', 'main'].filter(Boolean)
   });
 
   return {
@@ -31,40 +26,40 @@ export default (options: Options) => {
       const id = await plugin.resolveId(
         importee,
         importer || `${options.rootDir}/__no_importer__.js`
-      )
+      );
 
       if (typeof id === 'string') {
         // Exclude built-in modules
         if (builtinModules.includes(id)) {
-          return false
+          return false;
         }
 
         // If we don't intend to bundle node_modules
         // Mark it as external
         if (/node_modules/.test(id)) {
           if (!options.bundleNodeModules) {
-            return false
+            return false;
           }
           if (Array.isArray(options.bundleNodeModules)) {
-            const shouldBundle = options.bundleNodeModules.some(name =>
+            const shouldBundle = options.bundleNodeModules.some((name) =>
               id.includes(`/node_modules/${name}/`)
-            )
+            );
             if (!shouldBundle) {
-              return false
+              return false;
             }
           }
         }
 
         if (isExternal(options.externals, id, importer)) {
-          return false
+          return false;
         }
 
         if (/node_modules/.test(id) && !/^\.?\//.test(importee)) {
-          logger.warn(`Bundled ${importee} because ${importer} imported it.`)
+          logger.warn(`Bundled ${importee} because ${importer} imported it.`);
         }
       }
 
-      return id
+      return id;
     }
-  }
-}
+  };
+};

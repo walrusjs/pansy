@@ -24,7 +24,7 @@ export default (
       }
     ],
     require('@babel/preset-typescript')
-  ].filter(Boolean)
+  ].filter(Boolean);
 
   plugins = [
     ...plugins,
@@ -49,10 +49,10 @@ export default (
       }
     ],
     asyncToPromises && require('babel-plugin-transform-async-to-promises')
-  ].filter(Boolean)
+  ].filter(Boolean);
 
   return {
     presets,
     plugins
-  }
-}
+  };
+};

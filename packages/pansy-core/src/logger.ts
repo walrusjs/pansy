@@ -1,56 +1,56 @@
 import { chalk as colors } from '@walrus/shared-utils';
-import spinner from './spinner'
+import spinner from './spinner';
 
 interface Options {
-  logLevel?: 'verbose' | 'quiet'
+  logLevel?: 'verbose' | 'quiet';
 }
 
 class Logger {
   options: Options;
 
   constructor(options?: Options) {
-    this.options = options || {}
+    this.options = options || {};
   }
 
   setOptions(options: Options) {
-    Object.assign(this.options, options)
+    Object.assign(this.options, options);
   }
 
   get isDebug() {
-    return this.options.logLevel === 'verbose'
+    return this.options.logLevel === 'verbose';
   }
 
   get isQuiet() {
-    return this.options.logLevel === 'quiet'
+    return this.options.logLevel === 'quiet';
   }
 
   warn(...args: any[]) {
-    this.log(colors.yellow('warning'), ...args)
+    this.log(colors.yellow('warning'), ...args);
   }
 
   error(...args: any[]) {
-    this.log(colors.red('error'), ...args)
+    this.log(colors.red('error'), ...args);
   }
 
   success(...args: any[]) {
-    this.log(colors.green('success'), ...args)
+    this.log(colors.green('success'), ...args);
   }
 
   log(...args: any[]) {
-    spinner.stop()
-    if (this.isQuiet) return
-    console.log(...args)
+    spinner.stop();
+    if (this.isQuiet) return;
+    console.log(...args);
   }
 
   debug(...args: any[]) {
-    if (!this.isDebug) return
-    this.log(colors.magenta('verbose'), ...args)
+    if (!this.isDebug) return;
+    this.log(colors.magenta('verbose'), ...args);
   }
 
   progress(text: string) {
-    if (this.isQuiet) return
-    spinner.start(text)
+    if (this.isQuiet) return;
+    spinner.start(text);
   }
 }
 
-export default new Logger()
+export default new Logger();
