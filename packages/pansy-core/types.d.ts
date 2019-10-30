@@ -1,3 +1,5 @@
+declare module '*.json'
+
 declare module 'stringify-author' {
   type Stringify = (author: any) => string
   const stringify: Stringify;
@@ -12,6 +14,8 @@ declare module 'text-table' {
   const table: Table;
   export = table
 }
+
+declare module 'resolve';
 
 declare module 'rollup-plugin-babel'
 

@@ -1,4 +1,4 @@
-import path from 'path';
+import * as path from 'path';
 import { lodash, readPkg, chalk } from '@walrus/shared-utils';
 import {
   Env,

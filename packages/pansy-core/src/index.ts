@@ -1,5 +1,6 @@
 import './polyfills';
-import path from 'path';
+import * as path from 'path';
+import waterfall from 'p-waterfall';
 import { rollup, watch } from 'rollup';
 import { lodash, readPkg, configLoader } from '@walrus/shared-utils';
 import {
@@ -12,7 +13,6 @@ import {
   ConfigEntryObject
 } from '@pansy/types';
 import logger from './logger';
-import waterfall from 'p-waterfall';
 import createRollupConfig from './create-rollup-config';
 import spinner from './spinner';
 
@@ -34,14 +34,22 @@ export interface Task {
 }
 
 class Builder {
+  // 项目根目录
   public rootDir: string;
+  // 配置文件路径
   public configPath?: string;
+  // 配置
   public config: NormalizedConfig;
+  // package.json
   public pkg: readPkg.PackageJson;
   public bundles: Set<Assets>;
 
   constructor(config: Config, public options: Options = {}) {
+    // 设置日志输出级别
+    logger.setOptions({ logLevel: options.logLevel });
+
     this.rootDir = path.resolve(options.rootDir || '.');
+
     this.pkg = readPkg.sync({
       cwd: this.rootDir
     });
@@ -72,6 +80,11 @@ class Builder {
     this.bundles = new Set();
   }
 
+  /**
+   * 规范配置
+   * @param config 命令行以及默认配置
+   * @param userConfig 用户配置
+   */
   normalizeConfig = (config: Config, userConfig: Config) => {
     const result = lodash.merge({}, userConfig, config, {
       input: config.input || userConfig.input || 'src/index.js',
