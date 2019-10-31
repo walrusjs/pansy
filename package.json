@@ -37,7 +37,8 @@
     "rollup-plugin-node-resolve": "^4.2.3",
     "rollup-plugin-postcss": "^2.0.3",
     "rollup-plugin-replace": "^2.1.0",
-    "rollup-plugin-terser": "^4.0.2"
+    "rollup-plugin-terser": "^4.0.2",
+    "rollup-plugin-typescript2": "^0.19.2"
   },
   "devDependencies": {
     "@types/babel__core": "^7.0.4",
@@ -49,7 +50,6 @@
     "@types/elegant-spinner": "^2.0.1",
     "@types/figures": "^2.0.0",
     "@types/gzip-size": "^4.1.0",
-    "@types/jest": "^23.3.13",
     "@types/lodash": "^4.14.120",
     "@types/log-update": "^2.0.0",
     "@types/node": "^10.12.18",
@@ -72,7 +72,6 @@
     "husky": "^2.5.0",
     "jest": "^23.0.0",
     "joycon": "^2.2.4",
-    "lint-staged": "^7.2.0",
     "lodash": "^4.17.11",
     "nswatch": "^0.2.0",
     "p-waterfall": "^1.0.0",
@@ -84,15 +83,12 @@
     "require-so-slow": "^1.2.0",
     "resolve": "^1.10.0",
     "resolve-from": "^5.0.0",
-    "rollup-plugin-typescript2": "^0.19.2",
     "semantic-release": "^15.13.3",
     "slash": "^2.0.0",
     "string-width": "^3.0.0",
     "stringify-author": "^0.1.3",
     "text-table": "^0.2.0",
     "tinydate": "^1.0.1",
-    "ts-jest": "^23.10.5",
-    "typedoc": "^0.14.2",
     "typescript": "^3.2.4",
     "v8-compile-cache": "^2.0.2"
   },
