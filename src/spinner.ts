@@ -1,3 +1,3 @@
-import ora from 'ora'
+import ora from 'ora';
 
 export default ora()

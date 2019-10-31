@@ -13,7 +13,7 @@ import {
   Plugin as RollupPlugin,
   ModuleFormat as RollupFormat
 } from 'rollup'
-import merge from 'lodash/merge'
+import merge from 'lodash/merge';
 import waterfall from 'p-waterfall'
 import spinner from './spinner'
 import logger from './logger'

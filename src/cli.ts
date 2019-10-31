@@ -10,7 +10,7 @@ if (process.env.BILI_LOCAL_PROFILE) {
   })
 }
 
-const cli = cac('pansy')
+const cli = cac('pansy');
 
 cli
   .command('[...input]', 'Bundle input files', {

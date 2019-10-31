@@ -1,4 +1,4 @@
-import stringifyAuthor from 'stringify-author'
+import stringifyAuthor from 'stringify-author';
 
 interface BannerInfo {
   /** Author name */

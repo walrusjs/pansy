@@ -1,4 +1,4 @@
-import nodeResolve from 'resolve'
+import nodeResolve from 'resolve';
 import pify from 'pify'
 
 interface Options {

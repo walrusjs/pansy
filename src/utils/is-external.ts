@@ -1,4 +1,4 @@
-import slash from 'slash'
+import slash from 'slash';
 import { NormalizedConfig } from '../'
 
 export default function(

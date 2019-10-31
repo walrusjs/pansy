@@ -1,4 +1,4 @@
-import alterObjectAssign from 'babel-plugin-alter-object-assign'
+import alterObjectAssign from 'babel-plugin-alter-object-assign';
 
 const ENV = process.env.BABEL_ENV || process.env.NODE_ENV
 

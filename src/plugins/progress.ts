@@ -1,4 +1,4 @@
-import { Plugin } from 'rollup'
+import { Plugin } from 'rollup';
 import logger from '../logger'
 
 export default function({ title }: { title: string }): Plugin {

@@ -1,4 +1,4 @@
-import colors from 'chalk'
+import colors from 'chalk';
 import spinner from './spinner'
 
 interface Options {
