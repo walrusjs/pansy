@@ -1,15 +1,8 @@
 import './polyfills';
 import path from 'path';
-import {
-  chalk as colors,
-  configLoader
-} from '@walrus/shared-utils';
-import prettyBytes from 'pretty-bytes';
+import { chalk as colors, configLoader } from '@walrus/shared-utils';
 import formatTime from 'pretty-ms';
-import textTable from 'text-table';
 import resolveFrom from 'resolve-from';
-import boxen from 'boxen';
-import stringWidth from 'string-width';
 import { rollup, watch, Plugin as RollupPlugin, ModuleFormat as RollupFormat } from 'rollup';
 import merge from 'lodash/merge';
 import waterfall from 'p-waterfall';
@@ -19,6 +12,7 @@ import progressPlugin from './plugins/progress';
 import nodeResolvePlugin from './plugins/node-resolve';
 import isExternal from './utils/is-external';
 import getBanner from './utils/get-banner';
+import { getDefaultFileName, printAssets, Assets } from './utils';
 import {
   Options,
   Config,
@@ -113,7 +107,7 @@ export class Bundler {
     this.bundles = new Set();
   }
 
-  normalizeConfig(config: Config, userConfig: Config) {
+  normalizeConfig = (config: Config, userConfig: Config) => {
     const result = merge({}, userConfig, config, {
       input: config.input || userConfig.input || 'src/index.js',
       output: merge({}, userConfig.output, config.output),
@@ -134,7 +128,7 @@ export class Bundler {
     result.output.dir = path.resolve(result.output.dir || 'dist');
 
     return result;
-  }
+  };
 
   async createRollupConfig({
     source,
@@ -591,17 +585,17 @@ export class Bundler {
     }
   }
 
-  handleError(err: any) {
+  handleError = (err: any) => {
     if (err.stack) {
       console.error();
       console.error(colors.bold(colors.red('Stack Trace:')));
       console.error(colors.dim(err.stack));
     }
-  }
+  };
 
-  resolveRootDir(...args: string[]) {
+  resolveRootDir = (...args: string[]) => {
     return path.resolve(this.rootDir, ...args);
-  }
+  };
 
   localRequire(name: string, { silent, cwd }: { silent?: boolean; cwd?: string } = {}) {
     cwd = cwd || this.rootDir;
@@ -612,36 +606,6 @@ export class Bundler {
   getBundle(index: number) {
     return [...this.bundles][index];
   }
-}
-
-interface Asset {
-  absolute: string;
-  source: string;
-}
-type Assets = Map<string, Asset>;
-
-async function printAssets(assets: Assets, title: string) {
-  const gzipSize = await import('gzip-size').then((res) => res.default);
-  const table = await Promise.all(
-    [...assets.keys()].map(async (relative) => {
-      const asset = assets.get(relative) as Asset;
-      const size = asset.source.length;
-      return [colors.green(relative), prettyBytes(size), prettyBytes(await gzipSize(asset.source))];
-    })
-  );
-  table.unshift(['File', 'Size', 'Gzipped'].map((v) => colors.dim(v)));
-  logger.success(title);
-  logger.log(
-    boxen(
-      textTable(table, {
-        stringLength: stringWidth
-      })
-    )
-  );
-}
-
-function getDefaultFileName(format: RollupFormat) {
-  return format === 'cjs' ? `[name][min][ext]` : `[name].[format][min][ext]`;
 }
 
 export { Config, NormalizedConfig, Options, ConfigOutput };

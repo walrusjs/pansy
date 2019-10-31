@@ -16,7 +16,6 @@
     "build": "rm -rf dist && node lib/cli",
     "test": "walrus test",
     "lint": "walrus lint",
-    "lint:style": "walrus stylelint",
     "lint:commit": "walrus commitlint --env HUSKY_GIT_PARAMS",
     "prettier": "walrus prettier",
     "prepublishOnly": "yarn types && yarn build"
