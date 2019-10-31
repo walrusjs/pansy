@@ -5,11 +5,11 @@ import {
   Plugin as RollupPlugin
 } from 'rollup';
 
-import { Banner } from './utils/get-banner'
+import { Banner } from './utils/get-banner';
 
 type Diff<T extends keyof any, U extends keyof any> = ({ [P in T]: P } &
-  { [P in U]: never } & { [x: string]: never })[T]
-type Overwrite<T, U> = Pick<T, Diff<keyof T, keyof U>> & U
+  { [P in U]: never } & { [x: string]: never })[T];
+type Overwrite<T, U> = Pick<T, Diff<keyof T, keyof U>> & U;
 
 export type Format =
   | RollupFormat
@@ -19,92 +19,86 @@ export type Format =
   | 'umd-min'
   | 'iife-min'
   | 'amd-min'
-  | 'system-min'
+  | 'system-min';
 
 export type Env = {
-  [k: string]: string | number | boolean
-}
+  [k: string]: string | number | boolean;
+};
 
-export type External =
-  | string
-  | RegExp
-  | ((id: string, parentId?: string) => boolean)
+export type External = string | RegExp | ((id: string, parentId?: string) => boolean);
 
-export type Externals = Array<External>
+export type Externals = Array<External>;
 
-export type ConfigEntryObject = { [entryName: string]: string }
+export type ConfigEntryObject = { [entryName: string]: string };
 
 export type ExtendConfig = (
   config: NormalizedConfig,
   { format, input }: { format: Format; input: string[] | ConfigEntryObject }
-) => NormalizedConfig
+) => NormalizedConfig;
 
 export interface RunContext {
-  unresolved: Set<string>
+  unresolved: Set<string>;
 }
 
 export interface Task {
-  title: string
-  getConfig(context: RunContext, task: Task): Promise<RollupConfig>
+  title: string;
+  getConfig(context: RunContext, task: Task): Promise<RollupConfig>;
 }
 
 export interface RollupInputConfig extends InputOptions {
-  plugins: Array<RollupPlugin>
+  plugins: Array<RollupPlugin>;
 }
 
 export interface RollupOutputConfig extends OutputOptions {
-  dir: string
+  dir: string;
 }
 
 export interface RollupConfig {
-  inputConfig: RollupInputConfig
-  outputConfig: RollupOutputConfig
+  inputConfig: RollupInputConfig;
+  outputConfig: RollupOutputConfig;
 }
 
-export type ExtendRollupConfig = (config: RollupConfig) => RollupConfig
+export type ExtendRollupConfig = (config: RollupConfig) => RollupConfig;
 
 export interface FileNameContext {
-  format: RollupFormat
-  minify: boolean
+  format: RollupFormat;
+  minify: boolean;
 }
 
-export type GetFileName = (
-  context: FileNameContext,
-  defaultFileName: string
-) => string
+export type GetFileName = (context: FileNameContext, defaultFileName: string) => string;
 
 export interface BabelPresetOptions {
   /**
    * Transform `async/await` to `Promise`.
    * @default `true`
    */
-  asyncToPromises?: boolean
+  asyncToPromises?: boolean;
   /**
    * Custom JSX pragma. If you want to use Preact, set it to `h`.
    */
-  jsx?: string
+  jsx?: string;
   /**
    * Replace `Object.assign` with your own method.
    * @example `myAssign`
    */
-  objectAssign?: string
+  objectAssign?: string;
   /**
    * Disable .babelrc
    * By default Pansy reads it
    */
-  babelrc?: boolean
+  babelrc?: boolean;
   /**
    * Disable babel.config.js
    */
-  configFile?: boolean
+  configFile?: boolean;
   /**
    * Disable babel-preset-env but still use other babel plugins
    * In addtional we use rollup-plugin-buble after rollup-plugin-babel
    */
-  minimal?: boolean
+  minimal?: boolean;
 }
 
-export type OutputTarget = 'node' | 'browser'
+export type OutputTarget = 'node' | 'browser';
 
 export interface ConfigOutput {
   /**
@@ -113,13 +107,13 @@ export interface ConfigOutput {
    * @default `cjs`
    * @cli `--format <format>`
    */
-  format?: Format | Format[]
+  format?: Format | Format[];
   /**
    * Output directory
    * @default `dist`
    * @cli `-d, --out-dir <dir>`
    */
-  dir?: string
+  dir?: string;
   /**
    * Output file name
    *
@@ -137,35 +131,35 @@ export interface ConfigOutput {
    *
    * @cli `--file-name <fileName>`
    */
-  fileName?: string | GetFileName
+  fileName?: string | GetFileName;
   /**
    * Module name for umd bundle
    */
-  moduleName?: string
+  moduleName?: string;
   /**
    * Whether to minify output files regardless of format, using this option won't add `.min` suffix to the output file name.
    */
-  minify?: boolean
+  minify?: boolean;
   /**
    * Extract CSS into a single file.
    * @default `true`
    */
-  extractCSS?: boolean
+  extractCSS?: boolean;
   /**
    * Generate source maps
    * @default `true` for minified bundle, `false` otherwise
    */
-  sourceMap?: boolean
+  sourceMap?: boolean;
   /**
    * Exclude source code in source maps
    */
-  sourceMapExcludeSources?: boolean
+  sourceMapExcludeSources?: boolean;
   /**
    * Output target
    * @default `node`
    * @cli `--target <target>`
    */
-  target?: OutputTarget
+  target?: OutputTarget;
 }
 
 export interface Config {
@@ -174,8 +168,8 @@ export interface Config {
    * @default `src/index.js`
    * @cli `pansy [...input]`
    */
-  input?: string | ConfigEntryObject | Array<ConfigEntryObject | string>
-  output?: ConfigOutput
+  input?: string | ConfigEntryObject | Array<ConfigEntryObject | string>;
+  output?: ConfigOutput;
   /**
    * Define env variables that are only available in your library code. i.e. if you have some code like this in your library.
    *
@@ -195,7 +189,7 @@ export interface Config {
    *
    * @cli `--env.<name> value`
    */
-  env?: Env
+  env?: Env;
   /**
    * Use Rollup plugins
    *
@@ -221,8 +215,8 @@ export interface Config {
    * @cli `--plugin.<name> [option]`
    */
   plugins?: {
-    [name: string]: any
-  }
+    [name: string]: any;
+  };
   /**
    * Defines how to resolve a plugin by name
    * This will override the default behavior
@@ -236,18 +230,18 @@ export interface Config {
    * ```
    */
   resolvePlugins?: {
-    [name: string]: any
-  }
+    [name: string]: any;
+  };
   /**
    * Include node modules in the bundle. Note that this is always `true` for UMD bundle.
    * @cli `--bundle-node-modules`
    */
-  bundleNodeModules?: boolean | string[]
+  bundleNodeModules?: boolean | string[];
   /**
    * When inlining node modules
    * You can use this option to exclude specific modules
    */
-  externals?: Externals
+  externals?: Externals;
   /**
    * Specifies `moduleId: variableName` pairs necessary for external imports in umd/iife bundles. For example, in a case like this...
    *
@@ -269,67 +263,67 @@ export interface Config {
    * @cli `--global.<moduleId> <variableName`
    */
   globals?: {
-    [k: string]: string
-  }
+    [k: string]: string;
+  };
   /**
    * Insert a copyright message to the top of output bundle.
    */
-  banner?: Banner
+  banner?: Banner;
   /**
    * Configure the default babel preset
    */
-  babel?: BabelPresetOptions
+  babel?: BabelPresetOptions;
   /**
    * Extending Bili config
    */
-  extendConfig?: ExtendConfig
+  extendConfig?: ExtendConfig;
   /**
    * Extending generated rollup config
    */
-  extendRollupConfig?: ExtendRollupConfig
+  extendRollupConfig?: ExtendRollupConfig;
 }
 
 interface ConfigOutputOverwrite {
   /**
    * Output directory, always a string
    */
-  dir: string
+  dir: string;
 }
 
 export interface NormalizedConfig {
-  input?: string | ConfigEntryObject | Array<ConfigEntryObject | string>
-  output: Overwrite<ConfigOutput, ConfigOutputOverwrite>
-  env?: Env
-  bundleNodeModules?: boolean | string[]
+  input?: string | ConfigEntryObject | Array<ConfigEntryObject | string>;
+  output: Overwrite<ConfigOutput, ConfigOutputOverwrite>;
+  env?: Env;
+  bundleNodeModules?: boolean | string[];
   plugins: {
-    [name: string]: any
-  }
+    [name: string]: any;
+  };
   resolvePlugins?: {
-    [name: string]: any
-  }
-  externals: Externals
+    [name: string]: any;
+  };
+  externals: Externals;
   globals?: {
-    [k: string]: string
-  }
-  banner?: Banner
-  babel: BabelPresetOptions
-  extendConfig?: ExtendConfig
-  extendRollupConfig?: ExtendRollupConfig
+    [k: string]: string;
+  };
+  banner?: Banner;
+  babel: BabelPresetOptions;
+  extendConfig?: ExtendConfig;
+  extendRollupConfig?: ExtendRollupConfig;
 }
 
 export interface Options {
   /**
    * Log level
    */
-  logLevel?: 'verbose' | 'quiet'
+  logLevel?: 'verbose' | 'quiet';
   /**
    * Always show stack trace
    */
-  stackTrace?: boolean
+  stackTrace?: boolean;
   /**
    * Use a custom config file rather than auto-loading bili.config.js
    */
-  configFile?: string | boolean
+  configFile?: string | boolean;
   /**
    * The root directory to resolve files from
    * Useful for mono-repo
@@ -337,5 +331,5 @@ export interface Options {
    * - `pansy --root-dir packages/foo`
    * - `pansy --root-dir packages/bar`
    */
-  rootDir?: string
+  rootDir?: string;
 }

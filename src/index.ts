@@ -1,27 +1,22 @@
-import './polyfills'
-import path from 'path'
-import colors from 'chalk'
-import prettyBytes from 'pretty-bytes'
-import formatTime from 'pretty-ms'
-import textTable from 'text-table'
-import resolveFrom from 'resolve-from'
-import boxen from 'boxen'
-import stringWidth from 'string-width'
-import {
-  rollup,
-  watch,
-  Plugin as RollupPlugin,
-  ModuleFormat as RollupFormat
-} from 'rollup'
+import './polyfills';
+import path from 'path';
+import colors from 'chalk';
+import prettyBytes from 'pretty-bytes';
+import formatTime from 'pretty-ms';
+import textTable from 'text-table';
+import resolveFrom from 'resolve-from';
+import boxen from 'boxen';
+import stringWidth from 'string-width';
+import { rollup, watch, Plugin as RollupPlugin, ModuleFormat as RollupFormat } from 'rollup';
 import merge from 'lodash/merge';
-import waterfall from 'p-waterfall'
-import spinner from './spinner'
-import logger from './logger'
-import progressPlugin from './plugins/progress'
-import nodeResolvePlugin from './plugins/node-resolve'
-import configLoader from './config-loader'
-import isExternal from './utils/is-external'
-import getBanner from './utils/get-banner'
+import waterfall from 'p-waterfall';
+import spinner from './spinner';
+import logger from './logger';
+import progressPlugin from './plugins/progress';
+import nodeResolvePlugin from './plugins/node-resolve';
+import configLoader from './config-loader';
+import isExternal from './utils/is-external';
+import getBanner from './utils/get-banner';
 import {
   Options,
   Config,
@@ -33,62 +28,60 @@ import {
   RunContext,
   RollupConfig,
   Task
-} from './types'
+} from './types';
 
 // Make rollup-plugin-vue use basename in component.__file instead of absolute path
 // TODO: PR to rollup-plugin-vue to allow this as an API option
-process.env.BUILD = 'production'
+process.env.BUILD = 'production';
 
 interface RunOptions {
-  write?: boolean
-  watch?: boolean
-  concurrent?: boolean
+  write?: boolean;
+  watch?: boolean;
+  concurrent?: boolean;
 }
 
 interface RollupConfigInput {
   source: {
-    input: string[] | ConfigEntryObject
-    files: string[]
-    hasVue: boolean
-    hasTs: boolean
-  }
-  title: string
-  format: Format
-  context: RunContext
-  assets: Assets
-  config: NormalizedConfig
+    input: string[] | ConfigEntryObject;
+    files: string[];
+    hasVue: boolean;
+    hasTs: boolean;
+  };
+  title: string;
+  format: Format;
+  context: RunContext;
+  assets: Assets;
+  config: NormalizedConfig;
 }
 
-type PluginFactory = (opts: any) => RollupPlugin
-type GetPlugin = (name: string) => PluginFactory | Promise<PluginFactory>
+type PluginFactory = (opts: any) => RollupPlugin;
+type GetPlugin = (name: string) => PluginFactory | Promise<PluginFactory>;
 
 export class Bundler {
-  rootDir: string
-  config: NormalizedConfig
-  configPath?: string
+  rootDir: string;
+  config: NormalizedConfig;
+  configPath?: string;
   pkg: {
-    path?: string
-    data?: any
-  }
-  bundles: Set<Assets>
+    path?: string;
+    data?: any;
+  };
+  bundles: Set<Assets>;
 
   constructor(config: Config, public options: Options = {}) {
-    logger.setOptions({ logLevel: options.logLevel })
+    logger.setOptions({ logLevel: options.logLevel });
 
-    this.rootDir = path.resolve(options.rootDir || '.')
+    this.rootDir = path.resolve(options.rootDir || '.');
 
     this.pkg = configLoader.loadSync({
       files: ['package.json'],
       cwd: this.rootDir
-    })
+    });
     if (!this.pkg.data) {
-      this.pkg.data = {}
+      this.pkg.data = {};
     }
 
     if (/\.mjs$/.test(this.pkg.data.module || this.pkg.data.main)) {
-      logger.warn(
-        `Pansy no longer use .mjs extension for esm bundle, you should use .js instead!`
-      )
+      logger.warn(`Pansy no longer use .mjs extension for esm bundle, you should use .js instead!`);
     }
 
     const userConfig =
@@ -107,18 +100,15 @@ export class Bundler {
                   ],
             cwd: this.rootDir,
             packageKey: 'pansy'
-          })
+          });
     if (userConfig.path) {
-      logger.debug(`Using config file:`, userConfig.path)
-      this.configPath = userConfig.path
+      logger.debug(`Using config file:`, userConfig.path);
+      this.configPath = userConfig.path;
     }
 
-    this.config = this.normalizeConfig(
-      config,
-      userConfig.data || {}
-    ) as NormalizedConfig
+    this.config = this.normalizeConfig(config, userConfig.data || {}) as NormalizedConfig;
 
-    this.bundles = new Set()
+    this.bundles = new Set();
   }
 
   normalizeConfig(config: Config, userConfig: Config) {
@@ -134,18 +124,14 @@ export class Bundler {
         config.babel
       ),
       externals: [
-        ...(Array.isArray(userConfig.externals)
-          ? userConfig.externals
-          : [userConfig.externals]),
-        ...(Array.isArray(config.externals)
-          ? config.externals
-          : [config.externals])
+        ...(Array.isArray(userConfig.externals) ? userConfig.externals : [userConfig.externals]),
+        ...(Array.isArray(config.externals) ? config.externals : [config.externals])
       ]
-    })
+    });
 
-    result.output.dir = path.resolve(result.output.dir || 'dist')
+    result.output.dir = path.resolve(result.output.dir || 'dist');
 
-    return result
+    return result;
   }
 
   async createRollupConfig({
@@ -159,23 +145,19 @@ export class Bundler {
     // Always minify if config.minify is truthy
     // Otherwise infer by format
     const minify =
-      config.output.minify === undefined
-        ? format.endsWith('-min')
-        : config.output.minify
-    let minPlaceholder = ''
-    let rollupFormat: RollupFormat
+      config.output.minify === undefined ? format.endsWith('-min') : config.output.minify;
+    let minPlaceholder = '';
+    let rollupFormat: RollupFormat;
     if (format.endsWith('-min')) {
-      rollupFormat = format.replace(/-min$/, '') as RollupFormat
-      minPlaceholder = '.min'
+      rollupFormat = format.replace(/-min$/, '') as RollupFormat;
+      minPlaceholder = '.min';
     } else {
-      rollupFormat = format as RollupFormat
+      rollupFormat = format as RollupFormat;
     }
 
     // UMD format should always bundle node_modules
     const bundleNodeModules =
-      rollupFormat === 'umd' ||
-      rollupFormat === 'iife' ||
-      config.bundleNodeModules
+      rollupFormat === 'umd' || rollupFormat === 'iife' || config.bundleNodeModules;
 
     const pluginsOptions: { [key: string]: any } = {
       progress:
@@ -189,8 +171,7 @@ export class Bundler {
 
       json: config.plugins.json !== false && merge({}, config.plugins.json),
 
-      hashbang:
-        config.plugins.hashbang !== false && merge({}, config.plugins.hashbang),
+      hashbang: config.plugins.hashbang !== false && merge({}, config.plugins.hashbang),
 
       'node-resolve':
         config.plugins['node-resolve'] !== false &&
@@ -271,36 +252,36 @@ export class Bundler {
           // `ignore` is required to allow dynamic require
           // See: https://github.com/rollup/rollup-plugin-commonjs/blob/4a22147456b1092dd565074dc33a63121675102a/src/index.js#L32
           ignore: (name: string) => {
-            const { commonjs } = config.plugins
+            const { commonjs } = config.plugins;
             if (commonjs && commonjs.ignore && commonjs.ignore(name)) {
-              return true
+              return true;
             }
-            return isExternal(config.externals, name)
+            return isExternal(config.externals, name);
           }
         })
-    }
+    };
 
-    const env = Object.assign({}, config.env)
+    const env = Object.assign({}, config.env);
 
     pluginsOptions.replace = {
       ...config.plugins.replace,
       values: {
         ...Object.keys(env).reduce((res: Env, name) => {
-          res[`process.env.${name}`] = JSON.stringify(env[name])
-          return res
+          res[`process.env.${name}`] = JSON.stringify(env[name]);
+          return res;
         }, {}),
         ...(config.plugins.replace && config.plugins.replace.values)
       }
-    }
+    };
 
     if (Object.keys(pluginsOptions.replace.values).length === 0) {
-      pluginsOptions.replace = false
+      pluginsOptions.replace = false;
     }
 
-    const banner = getBanner(config.banner, this.pkg.data)
+    const banner = getBanner(config.banner, this.pkg.data);
 
     if (minify) {
-      const terserOptions = config.plugins.terser || {}
+      const terserOptions = config.plugins.terser || {};
       pluginsOptions.terser = {
         ...terserOptions,
         output: {
@@ -308,56 +289,53 @@ export class Bundler {
           // Add banner (if there is)
           preamble: banner
         }
-      }
+      };
     }
 
     for (const name of Object.keys(config.plugins)) {
       if (pluginsOptions[name] === undefined) {
-        Object.assign(pluginsOptions, { [name]: config.plugins[name] })
+        Object.assign(pluginsOptions, { [name]: config.plugins[name] });
       }
     }
 
     const getPlugin: GetPlugin = (name: string) => {
       if (config.resolvePlugins && config.resolvePlugins[name]) {
-        return config.resolvePlugins[name]
+        return config.resolvePlugins[name];
       }
 
-      const isBuiltIn = require('../package').dependencies[
-        `rollup-plugin-${name}`
-      ]
+      const isBuiltIn = require('../package').dependencies[`rollup-plugin-${name}`];
       const plugin =
         name === 'babel'
-          ? import('./plugins/babel').then(res => res.default)
+          ? import('./plugins/babel').then((res) => res.default)
           : name === 'node-resolve'
           ? nodeResolvePlugin
           : name === 'progress'
           ? progressPlugin
           : isBuiltIn
           ? require(`rollup-plugin-${name}`)
-          : this.localRequire(`rollup-plugin-${name}`)
+          : this.localRequire(`rollup-plugin-${name}`);
 
       if (name === 'terser') {
-        return plugin.terser
+        return plugin.terser;
       }
 
-      return plugin.default || plugin
-    }
+      return plugin.default || plugin;
+    };
 
     const plugins = await Promise.all(
       Object.keys(pluginsOptions)
-        .filter(name => pluginsOptions[name])
-        .map(async name => {
-          const options =
-            pluginsOptions[name] === true ? {} : pluginsOptions[name]
-          const plugin = await getPlugin(name)
-          return plugin(options)
+        .filter((name) => pluginsOptions[name])
+        .map(async (name) => {
+          const options = pluginsOptions[name] === true ? {} : pluginsOptions[name];
+          const plugin = await getPlugin(name);
+          return plugin(options);
         })
-    )
+    );
 
     if (logger.isDebug) {
       for (const name of Object.keys(pluginsOptions)) {
         if (pluginsOptions[name]) {
-          logger.debug(colors.dim(format), `Using plugin: ${name}`)
+          logger.debug(colors.dim(format), `Using plugin: ${name}`);
         }
       }
     }
@@ -365,39 +343,36 @@ export class Bundler {
     // Add bundle to out assets Map
     // So that we can log the stats when all builds completed
     // Make sure this is the last plugin!
-    let startTime: number
-    let endTime: number
+    let startTime: number;
+    let endTime: number;
     plugins.push({
       name: 'record-bundle',
       generateBundle(outputOptions, _assets) {
         const EXTS = [
-          outputOptions.entryFileNames
-            ? path.extname(outputOptions.entryFileNames)
-            : '.js',
+          outputOptions.entryFileNames ? path.extname(outputOptions.entryFileNames) : '.js',
           '.css'
-        ]
+        ];
         for (const fileName of Object.keys(_assets)) {
-          if (EXTS.some(ext => fileName.endsWith(ext))) {
-            const file: any = _assets[fileName]
-            const absolute =
-              outputOptions.dir && path.resolve(outputOptions.dir, fileName)
+          if (EXTS.some((ext) => fileName.endsWith(ext))) {
+            const file: any = _assets[fileName];
+            const absolute = outputOptions.dir && path.resolve(outputOptions.dir, fileName);
             if (absolute) {
-              const relative = path.relative(process.cwd(), absolute)
+              const relative = path.relative(process.cwd(), absolute);
               assets.set(relative, {
                 absolute,
                 get source() {
-                  return file.isAsset ? file.source.toString() : file.code
+                  return file.isAsset ? file.source.toString() : file.code;
                 }
-              })
+              });
             }
           }
         }
       },
       buildStart() {
-        startTime = Date.now()
+        startTime = Date.now();
       },
       buildEnd() {
-        endTime = Date.now()
+        endTime = Date.now();
       },
       async writeBundle() {
         await printAssets(
@@ -405,49 +380,45 @@ export class Bundler {
           `${title.replace('Bundle', 'Bundled')} ${colors.dim(
             `(${formatTime(endTime - startTime)})`
           )}`
-        )
+        );
       }
-    })
+    });
 
-    const defaultFileName = getDefaultFileName(rollupFormat)
-    const getFileName = config.output.fileName || defaultFileName
+    const defaultFileName = getDefaultFileName(rollupFormat);
+    const getFileName = config.output.fileName || defaultFileName;
     const fileNameTemplate =
       typeof getFileName === 'function'
         ? getFileName({ format: rollupFormat, minify }, defaultFileName)
-        : getFileName
+        : getFileName;
     const fileName = fileNameTemplate
       .replace(/\[min\]/, minPlaceholder)
       // The `[ext]` placeholder no longer makes sense
       // Since we only output to `.js` now
       // Probably remove it in the future
-      .replace(/\[ext\]/, '.js')
+      .replace(/\[ext\]/, '.js');
 
     return {
       inputConfig: {
         input: source.input,
         plugins,
-        external: Object.keys(config.globals || {}).filter(
-          v => !/^[\.\/]/.test(v)
-        ),
+        external: Object.keys(config.globals || {}).filter((v) => !/^[\.\/]/.test(v)),
         onwarn(warning) {
           if (typeof warning === 'string') {
-            return logger.warn(warning)
+            return logger.warn(warning);
           }
-          const code = (warning.code || '').toLowerCase()
+          const code = (warning.code || '').toLowerCase();
           if (code === 'mixed_exports' || code === 'missing_global_name') {
-            return
+            return;
           }
-          let message = warning.message
+          let message = warning.message;
           if (code === 'unresolved_import' && warning.source) {
             if (format !== 'umd' || context.unresolved.has(warning.source)) {
-              return
+              return;
             }
-            context.unresolved.add(warning.source)
-            message = `${warning.source} is treated as external dependency`
+            context.unresolved.add(warning.source);
+            message = `${warning.source} is treated as external dependency`;
           }
-          logger.warn(
-            `${colors.yellow(`${code}`)}${colors.dim(':')} ${message}`
-          )
+          logger.warn(`${colors.yellow(`${code}`)}${colors.dim(':')} ${message}`);
         }
       },
       outputConfig: {
@@ -457,100 +428,89 @@ export class Bundler {
         entryFileNames: fileName,
         name: config.output.moduleName,
         banner,
-        sourcemap:
-          typeof config.output.sourceMap === 'boolean'
-            ? config.output.sourceMap
-            : minify,
+        sourcemap: typeof config.output.sourceMap === 'boolean' ? config.output.sourceMap : minify,
         sourcemapExcludeSources: config.output.sourceMapExcludeSources
       }
-    }
+    };
   }
 
   async run(options: RunOptions = {}) {
     const context: RunContext = {
       unresolved: new Set()
-    }
-    const tasks: Task[] = []
+    };
+    const tasks: Task[] = [];
 
-    let { input } = this.config
+    let { input } = this.config;
     if (!Array.isArray(input)) {
-      input = [input || 'src/index.js']
+      input = [input || 'src/index.js'];
     }
     if (Array.isArray(input) && input.length === 0) {
-      input = ['src/index.js']
+      input = ['src/index.js'];
     }
 
     const getMeta = (files: string[]) => {
       return {
-        hasVue: files.some(file => file.endsWith('.vue')),
-        hasTs: files.some(file => /\.tsx?$/.test(file))
-      }
-    }
+        hasVue: files.some((file) => file.endsWith('.vue')),
+        hasTs: files.some((file) => /\.tsx?$/.test(file))
+      };
+    };
 
     const normalizeInputValue = (input: string[] | ConfigEntryObject) => {
       if (Array.isArray(input)) {
-        return input.map(
-          v => `./${path.relative(this.rootDir, this.resolveRootDir(v))}`
-        )
+        return input.map((v) => `./${path.relative(this.rootDir, this.resolveRootDir(v))}`);
       }
-      return Object.keys(input).reduce(
-        (res: ConfigEntryObject, entryName: string) => {
-          res[entryName] = `./${path.relative(
-            this.rootDir,
-            this.resolveRootDir(input[entryName])
-          )}`
-          return res
-        },
-        {}
-      )
-    }
+      return Object.keys(input).reduce((res: ConfigEntryObject, entryName: string) => {
+        res[entryName] = `./${path.relative(this.rootDir, this.resolveRootDir(input[entryName]))}`;
+        return res;
+      }, {});
+    };
 
-    const sources = input.map(v => {
+    const sources = input.map((v) => {
       if (typeof v === 'string') {
-        const files = v.split(',')
+        const files = v.split(',');
         return {
           files,
           input: normalizeInputValue(files),
           ...getMeta(files)
-        }
+        };
       }
-      const files = Object.values(v)
+      const files = Object.values(v);
       return {
         files,
         input: normalizeInputValue(v),
         ...getMeta(files)
-      }
-    })
+      };
+    });
 
-    let { format, target } = this.config.output
+    let { format, target } = this.config.output;
     if (Array.isArray(format)) {
       if (format.length === 0) {
-        format = ['cjs']
+        format = ['cjs'];
       }
     } else if (typeof format === 'string') {
-      format = format.split(',') as Format[]
+      format = format.split(',') as Format[];
     } else {
-      format = ['cjs']
+      format = ['cjs'];
     }
-    const formats = format
+    const formats = format;
 
     for (const source of sources) {
       for (const format of formats) {
-        let title = `Bundle ${source.files.join(', ')} in ${format} format`
+        let title = `Bundle ${source.files.join(', ')} in ${format} format`;
         if (target) {
-          title += ` for target ${target}`
+          title += ` for target ${target}`;
         }
         tasks.push({
           title,
           getConfig: async (context, task) => {
-            const assets: Assets = new Map()
-            this.bundles.add(assets)
+            const assets: Assets = new Map();
+            this.bundles.add(assets);
             const config = this.config.extendConfig
               ? this.config.extendConfig(merge({}, this.config), {
                   input: source.input,
                   format
                 })
-              : this.config
+              : this.config;
             const rollupConfig = await this.createRollupConfig({
               source,
               format,
@@ -558,140 +518,128 @@ export class Bundler {
               context,
               assets,
               config
-            })
+            });
             return this.config.extendRollupConfig
               ? this.config.extendRollupConfig(rollupConfig)
-              : rollupConfig
+              : rollupConfig;
           }
-        })
+        });
       }
     }
 
     if (options.watch) {
       const configs = await Promise.all(
-        tasks.map(async task => {
-          const { inputConfig, outputConfig } = await task.getConfig(
-            context,
-            task
-          )
+        tasks.map(async (task) => {
+          const { inputConfig, outputConfig } = await task.getConfig(context, task);
           return {
             ...inputConfig,
             output: outputConfig,
             watch: {}
-          }
+          };
         })
-      )
-      const watcher = watch(configs)
-      watcher.on('event', e => {
+      );
+      const watcher = watch(configs);
+      watcher.on('event', (e) => {
         if (e.code === 'ERROR') {
-          logger.error(e.error.message)
+          logger.error(e.error.message);
         }
-      })
+      });
     } else {
       try {
         if (options.concurrent) {
           await Promise.all(
-            tasks.map(task => {
-              return this.build(task, context, options.write)
+            tasks.map((task) => {
+              return this.build(task, context, options.write);
             })
-          )
+          );
         } else {
           await waterfall(
-            tasks.map(task => () => {
-              return this.build(task, context, options.write)
+            tasks.map((task) => () => {
+              return this.build(task, context, options.write);
             }),
             context
-          )
+          );
         }
       } catch (err) {
-        spinner.stop()
-        throw err
+        spinner.stop();
+        throw err;
       }
     }
 
-    return this
+    return this;
   }
 
   async build(task: Task, context: RunContext, write?: boolean) {
     try {
-      const { inputConfig, outputConfig } = await task.getConfig(context, task)
-      const bundle = await rollup(inputConfig)
+      const { inputConfig, outputConfig } = await task.getConfig(context, task);
+      const bundle = await rollup(inputConfig);
       if (write) {
-        await bundle.write(outputConfig)
+        await bundle.write(outputConfig);
       } else {
-        await bundle.generate(outputConfig)
+        await bundle.generate(outputConfig);
       }
     } catch (err) {
-      err.rollup = true
-      logger.error(task.title.replace('Bundle', 'Failed to bundle'))
+      err.rollup = true;
+      logger.error(task.title.replace('Bundle', 'Failed to bundle'));
       if (err.message.includes('You must supply output.name for UMD bundles')) {
-        err.code = 'require_module_name'
-        err.message = `You must supply output.moduleName option or use --module-name <name> flag for UMD bundles`
+        err.code = 'require_module_name';
+        err.message = `You must supply output.moduleName option or use --module-name <name> flag for UMD bundles`;
       }
-      throw err
+      throw err;
     }
   }
 
   handleError(err: any) {
     if (err.stack) {
-      console.error()
-      console.error(colors.bold(colors.red('Stack Trace:')))
-      console.error(colors.dim(err.stack))
+      console.error();
+      console.error(colors.bold(colors.red('Stack Trace:')));
+      console.error(colors.dim(err.stack));
     }
   }
 
   resolveRootDir(...args: string[]) {
-    return path.resolve(this.rootDir, ...args)
+    return path.resolve(this.rootDir, ...args);
   }
 
-  localRequire(
-    name: string,
-    { silent, cwd }: { silent?: boolean; cwd?: string } = {}
-  ) {
-    cwd = cwd || this.rootDir
-    const resolved = silent
-      ? resolveFrom.silent(cwd, name)
-      : resolveFrom(cwd, name)
-    return resolved && require(resolved)
+  localRequire(name: string, { silent, cwd }: { silent?: boolean; cwd?: string } = {}) {
+    cwd = cwd || this.rootDir;
+    const resolved = silent ? resolveFrom.silent(cwd, name) : resolveFrom(cwd, name);
+    return resolved && require(resolved);
   }
 
   getBundle(index: number) {
-    return [...this.bundles][index]
+    return [...this.bundles][index];
   }
 }
 
 interface Asset {
-  absolute: string
-  source: string
+  absolute: string;
+  source: string;
 }
-type Assets = Map<string, Asset>
+type Assets = Map<string, Asset>;
 
 async function printAssets(assets: Assets, title: string) {
-  const gzipSize = await import('gzip-size').then(res => res.default)
+  const gzipSize = await import('gzip-size').then((res) => res.default);
   const table = await Promise.all(
-    [...assets.keys()].map(async relative => {
-      const asset = assets.get(relative) as Asset
-      const size = asset.source.length
-      return [
-        colors.green(relative),
-        prettyBytes(size),
-        prettyBytes(await gzipSize(asset.source))
-      ]
+    [...assets.keys()].map(async (relative) => {
+      const asset = assets.get(relative) as Asset;
+      const size = asset.source.length;
+      return [colors.green(relative), prettyBytes(size), prettyBytes(await gzipSize(asset.source))];
     })
-  )
-  table.unshift(['File', 'Size', 'Gzipped'].map(v => colors.dim(v)))
-  logger.success(title)
+  );
+  table.unshift(['File', 'Size', 'Gzipped'].map((v) => colors.dim(v)));
+  logger.success(title);
   logger.log(
     boxen(
       textTable(table, {
         stringLength: stringWidth
       })
     )
-  )
+  );
 }
 
 function getDefaultFileName(format: RollupFormat) {
-  return format === 'cjs' ? `[name][min][ext]` : `[name].[format][min][ext]`
+  return format === 'cjs' ? `[name][min][ext]` : `[name].[format][min][ext]`;
 }
 
-export { Config, NormalizedConfig, Options, ConfigOutput }
+export { Config, NormalizedConfig, Options, ConfigOutput };

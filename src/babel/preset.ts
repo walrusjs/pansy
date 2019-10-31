@@ -1,6 +1,6 @@
 import alterObjectAssign from 'babel-plugin-alter-object-assign';
 
-const ENV = process.env.BABEL_ENV || process.env.NODE_ENV
+const ENV = process.env.BABEL_ENV || process.env.NODE_ENV;
 
 export default (
   context: any,
@@ -11,8 +11,8 @@ export default (
     minimal = process.env.BILI_MINIMAL
   } = {}
 ) => {
-  let presets: any[] = []
-  let plugins: any[] = []
+  let presets: any[] = [];
+  let plugins: any[] = [];
 
   presets = [
     ...presets,
@@ -24,7 +24,7 @@ export default (
       }
     ],
     require('@babel/preset-typescript')
-  ].filter(Boolean)
+  ].filter(Boolean);
 
   plugins = [
     ...plugins,
@@ -49,10 +49,10 @@ export default (
       }
     ],
     asyncToPromises && require('babel-plugin-transform-async-to-promises')
-  ].filter(Boolean)
+  ].filter(Boolean);
 
   return {
     presets,
     plugins
-  }
-}
+  };
+};

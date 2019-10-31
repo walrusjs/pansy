@@ -1,15 +1,11 @@
 import slash from 'slash';
-import { NormalizedConfig } from '../'
+import { NormalizedConfig } from '../';
 
-export default function(
-  externals: NormalizedConfig['externals'],
-  id: string,
-  parentId?: string
-) {
-  id = slash(id)
+export default function(externals: NormalizedConfig['externals'], id: string, parentId?: string) {
+  id = slash(id);
 
   if (!Array.isArray(externals)) {
-    externals = [externals] as NormalizedConfig['externals']
+    externals = [externals] as NormalizedConfig['externals'];
   }
 
   for (const external of externals) {
@@ -17,19 +13,19 @@ export default function(
       typeof external === 'string' &&
       (id === external || id.includes(`/node_modules/${external}/`))
     ) {
-      return true
+      return true;
     }
     if (external instanceof RegExp) {
       if (external.test(id)) {
-        return true
+        return true;
       }
     }
     if (typeof external === 'function') {
       if (external(id, parentId)) {
-        return true
+        return true;
       }
     }
   }
 
-  return false
+  return false;
 }
