@@ -11,8 +11,14 @@
     "babel.js"
   ],
   "scripts": {
+    "bootstrap": "yarn && npm install",
     "types": "tsc --build tsconfig.types.json",
     "build": "rm -rf dist && node lib/cli",
+    "test": "walrus test",
+    "lint": "walrus lint",
+    "lint:style": "walrus stylelint",
+    "lint:commit": "walrus commitlint --env HUSKY_GIT_PARAMS",
+    "prettier": "walrus prettier",
     "prepublishOnly": "yarn types && yarn build"
   },
   "repository": "git@github.com:walrus-plus/pansy.git",
@@ -62,6 +68,7 @@
     "@types/resolve": "^0.0.8",
     "@types/slash": "^2.0.0",
     "@types/string-width": "^2.0.0",
+    "@walrus/cli": "^0.2.2",
     "babel-plugin-alter-object-assign": "^1.0.2",
     "boxen": "^2.1.0",
     "builtin-modules": "^3.0.0",
@@ -91,6 +98,12 @@
     "tinydate": "^1.0.1",
     "typescript": "^3.2.4",
     "v8-compile-cache": "^2.0.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn prettier",
+      "commit-msg": "yarn lint:commit"
+    }
   },
   "browserslist": [
     "node 8"

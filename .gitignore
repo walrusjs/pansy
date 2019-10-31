@@ -2,12 +2,16 @@
 lib
 dist
 public
+types
 
 # Test
 coverage
 
 # Dependency directories
 node_modules
+
+# cache
+.rpt2_cache
 
 # Log
 npm-debug.log*
@@ -18,5 +22,3 @@ yarn-error.log*
 .idea
 
 .DS_Store
-.rpt2_cache
-types
