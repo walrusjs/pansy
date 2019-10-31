@@ -1,4 +1,6 @@
-import colors from 'chalk';
+import {
+  chalk as colors
+} from '@walrus/shared-utils';
 import spinner from './spinner';
 
 interface Options {

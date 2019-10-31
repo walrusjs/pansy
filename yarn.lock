@@ -1930,11 +1930,6 @@
   resolved "https://registry.npmjs.org/@types/q/-/q-1.5.1.tgz#48fd98c1561fe718b61733daed46ff115b496e18"
   integrity sha512-eqz8c/0kwNi/OEHQfvIuJVLTst3in0e7uTKeuY+WL/zfKn0xVujOTp42bS/vUUokhK5P2BppLd9JXMOMHcgbjA==
 
-"@types/require-from-string@^1.2.0":
-  version "1.2.0"
-  resolved "https://registry.npmjs.org/@types/require-from-string/-/require-from-string-1.2.0.tgz#c18cfc8a2c1a0259e5841d1fef2b5e9d01c64242"
-  integrity sha512-5vE9WoOOC9/DoD3Zj53UISpM+5tSvh8k0mL4fe2zFI6vO715/W4IQ3EdVUrWVMrFi1/NZhyMvm2iKsDFkEGddQ==
-
 "@types/resolve@0.0.8", "@types/resolve@^0.0.8":
   version "0.0.8"
   resolved "https://registry.npmjs.org/@types/resolve/-/resolve-0.0.8.tgz#f26074d238e02659e323ce1a13d041eee280e194"
@@ -7619,11 +7614,6 @@ jest@^24.9.0:
   dependencies:
     import-local "^2.0.0"
     jest-cli "^24.9.0"
-
-joycon@^2.2.4:
-  version "2.2.4"
-  resolved "https://registry.npmjs.org/joycon/-/joycon-2.2.4.tgz#ac4119d2673dfaa89b41efe5d6d670208e348bc6"
-  integrity sha512-Z4G7ZPovoSfAHCSEKznWV4IjyyUxzTY78Sgtr8inbnRxaZMAQGwqNJ46BDwcH3WgIwk0Xt1kpCsC/DFAioRtBA==
 
 joycon@^2.2.5:
   version "2.2.5"

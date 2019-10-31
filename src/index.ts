@@ -1,6 +1,9 @@
 import './polyfills';
 import path from 'path';
-import colors from 'chalk';
+import {
+  chalk as colors,
+  configLoader
+} from '@walrus/shared-utils';
 import prettyBytes from 'pretty-bytes';
 import formatTime from 'pretty-ms';
 import textTable from 'text-table';
@@ -14,7 +17,6 @@ import spinner from './spinner';
 import logger from './logger';
 import progressPlugin from './plugins/progress';
 import nodeResolvePlugin from './plugins/node-resolve';
-import configLoader from './config-loader';
 import isExternal from './utils/is-external';
 import getBanner from './utils/get-banner';
 import {
