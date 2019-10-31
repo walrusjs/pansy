@@ -3,7 +3,7 @@ import 'v8-compile-cache';
 import cac from 'cac';
 import { version } from '../package.json';
 
-if (process.env.BILI_LOCAL_PROFILE) {
+if (process.env.PANSY_LOCAL_PROFILE) {
   const requireSoSlow = require('require-so-slow');
   process.on('exit', () => {
     requireSoSlow.write('require-trace.trace');

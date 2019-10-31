@@ -208,7 +208,7 @@ export interface Config {
    * ```bash
    * pansy --plugin.svelte
    * # with option
-   * bili --plugin.svelte.foo bar
+   * pansy --plugin.svelte.foo bar
    * # Same as using `svelte: { foo: 'bar' }` in config file
    * ```
    *
@@ -252,7 +252,7 @@ export interface Config {
    * ...you can map the `jquery` module ID to the global `$` variable:
    *
    * ```js
-   * // bili.config.js
+   * // pansy.config.js
    * export default {
    *   globals: {
    *     jquery: '$'
@@ -321,7 +321,7 @@ export interface Options {
    */
   stackTrace?: boolean;
   /**
-   * Use a custom config file rather than auto-loading bili.config.js
+   * Use a custom config file rather than auto-loading pansy.config.js
    */
   configFile?: string | boolean;
   /**
