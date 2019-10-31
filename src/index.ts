@@ -1,10 +1,9 @@
 import './polyfills';
 import path from 'path';
-import { chalk as colors, configLoader } from '@walrus/shared-utils';
+import { chalk as colors, configLoader, lodash } from '@walrus/shared-utils';
 import formatTime from 'pretty-ms';
 import resolveFrom from 'resolve-from';
 import { rollup, watch, Plugin as RollupPlugin, ModuleFormat as RollupFormat } from 'rollup';
-import merge from 'lodash/merge';
 import waterfall from 'p-waterfall';
 import spinner from './spinner';
 import logger from './logger';
@@ -52,6 +51,8 @@ interface RollupConfigInput {
 
 type PluginFactory = (opts: any) => RollupPlugin;
 type GetPlugin = (name: string) => PluginFactory | Promise<PluginFactory>;
+
+const merge = lodash.merge;
 
 export class Bundler {
   rootDir: string;
