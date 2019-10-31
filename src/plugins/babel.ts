@@ -33,19 +33,19 @@ export default babel.custom((core: any) => {
       // So that you can use our default preset in your own babel.config.js
       // And our options will still work
       if (presetOptions.asyncToPromises) {
-        process.env.BILI_ASYNC_TO_PROMISES = 'enabled';
+        process.env.PANSY_ASYNC_TO_PROMISES = 'enabled';
       }
 
       if (presetOptions.jsx) {
-        process.env.BILI_JSX = presetOptions.jsx;
+        process.env.PANSY_JSX = presetOptions.jsx;
       }
 
       if (presetOptions.objectAssign) {
-        process.env.BILI_OBJECT_ASSIGN = presetOptions.objectAssign;
+        process.env.PANSY_OBJECT_ASSIGN = presetOptions.objectAssign;
       }
 
       if (presetOptions.minimal) {
-        process.env.BILI_MINIMAL = 'enabled';
+        process.env.PANSY_MINIMAL = 'enabled';
       }
 
       return {

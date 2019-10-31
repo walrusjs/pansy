@@ -20,7 +20,7 @@ export default (options: Options) => {
   return {
     ...plugin,
 
-    name: 'bili-custom-resolve',
+    name: 'pansy-custom-resolve',
 
     async resolveId(importee: string, importer?: string) {
       const id = await plugin.resolveId(

@@ -5,10 +5,10 @@ const ENV = process.env.BABEL_ENV || process.env.NODE_ENV;
 export default (
   context: any,
   {
-    asyncToPromises = process.env.BILI_ASYNC_TO_PROMISES,
-    jsx = process.env.BILI_JSX,
-    objectAssign = process.env.BILI_OBJECT_ASSIGN,
-    minimal = process.env.BILI_MINIMAL
+    asyncToPromises = process.env.PANSY_ASYNC_TO_PROMISES,
+    jsx = process.env.PANSY_JSX,
+    objectAssign = process.env.PANSY_OBJECT_ASSIGN,
+    minimal = process.env.PANSY_MINIMAL
   } = {}
 ) => {
   let presets: any[] = [];
