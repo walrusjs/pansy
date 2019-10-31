@@ -1,4 +1,4 @@
-import { Config } from './src'
+import { Config } from './src';
 
 const config: Config = {
   input: {
@@ -13,4 +13,4 @@ const config: Config = {
   ]
 };
 
-export default config
+export default config;

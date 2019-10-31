@@ -8,11 +8,7 @@ export default function({ title }: { title: string }): Plugin {
       logger.progress(title);
     },
 
-    transform(
-      this: PluginContext,
-      code: string,
-      id: string)
-    {
+    transform(this: PluginContext, code: string, id: string) {
       if (!process.env.CI && process.stdout.isTTY) {
         logger.progress(`Bundling ${id.replace(process.cwd(), '.')}`);
       }
