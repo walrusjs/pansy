@@ -11,7 +11,7 @@
     "babel.js"
   ],
   "scripts": {
-    "bootstrap": "yarn && npm install",
+    "bootstrap": "yarn || npm i",
     "types": "tsc --build tsconfig.types.json",
     "build": "rm -rf dist && node lib/cli",
     "test": "walrus test",
@@ -24,15 +24,16 @@
   "author": "wangxingkang <wang_xingkang@qq.com>",
   "license": "MIT",
   "dependencies": {
-    "@babel/core": "^7.2.2",
-    "@babel/plugin-proposal-object-rest-spread": "^7.3.1",
+    "@babel/core": "^7.6.4",
+    "@babel/plugin-proposal-object-rest-spread": "^7.6.2",
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@babel/plugin-transform-react-jsx": "^7.3.0",
-    "@babel/preset-env": "^7.3.1",
-    "@babel/preset-typescript": "^7.1.0",
+    "@babel/preset-env": "^7.6.3",
+    "@babel/preset-typescript": "^7.6.0",
+    "@rollup/plugin-replace": "^2.2.0",
     "@walrus/shared-utils": "^0.2.2",
     "babel-plugin-alter-object-assign": "^1.0.2",
-    "babel-plugin-transform-async-to-promises": "^0.8.4",
+    "babel-plugin-transform-async-to-promises": "^0.8.15",
     "ora": "^4.0.2",
     "rollup": "^1.1.2",
     "rollup-plugin-babel": "^4.3.2",
@@ -47,9 +48,7 @@
     "rollup-plugin-typescript2": "^0.19.2"
   },
   "devDependencies": {
-    "@types/boxen": "^3.0.1",
     "@types/node": "^12.12.3",
-    "@types/ora": "^3.0.0",
     "@types/pify": "^3.0.2",
     "@types/resolve": "^0.0.8",
     "@walrus/cli": "^0.2.2",
