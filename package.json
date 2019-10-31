@@ -35,7 +35,7 @@
     "babel-plugin-alter-object-assign": "^1.0.2",
     "babel-plugin-transform-async-to-promises": "^0.8.15",
     "ora": "^4.0.2",
-    "rollup": "^1.1.2",
+    "rollup": "^1.26.0",
     "rollup-plugin-babel": "^4.3.2",
     "rollup-plugin-buble": "^0.19.6",
     "rollup-plugin-commonjs": "^9.2.0",
