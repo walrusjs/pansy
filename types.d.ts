@@ -1,11 +1,5 @@
 declare module '*.json'
 
-declare module 'tinydate' {
-  type Tinydate = (template: string) => (date?: Date) => string
-  const tinydate: Tinydate
-  export = tinydate
-}
-
 declare module 'rollup-plugin-babel'
 
 declare module 'babel-plugin-alter-object-assign'
