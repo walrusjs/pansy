@@ -7,7 +7,7 @@ sidebar: auto
 
 ## babel
 
-- 类型: 
+- 类型:
 
 ```
 {
@@ -20,7 +20,8 @@ sidebar: auto
 }
 
 ```
-- 默认值: 
+
+- 默认值:
 
 ```
 {
@@ -28,7 +29,7 @@ sidebar: auto
 }
 ```
 
-配置默认Babel预设
+配置默认 Babel 预设
 
 ### babel.asyncToPromises
 
@@ -36,7 +37,7 @@ sidebar: auto
 
 ### babel.babelrc
 
-禁用.babelrc，默认情况下，Pansy会读取它
+禁用.babelrc，默认情况下，Pansy 会读取它
 
 ### babel.configFile
 
@@ -44,11 +45,11 @@ sidebar: auto
 
 ### babel.jsx
 
-自定义JSX编译指示。 如果要使用`Preact`，请将其设置为`h`。
+自定义 JSX 编译指示。 如果要使用`Preact`，请将其设置为`h`。
 
 ### babel.minimal
 
-禁用`babel-preset-env`，但仍可以使用其他babel插件。另外，我们在`rollup-plugin-babel`之后使用`rollup-plugin-buble`
+禁用`babel-preset-env`，但仍可以使用其他 babel 插件。另外，我们在`rollup-plugin-babel`之后使用`rollup-plugin-buble`
 
 ### babel.objectAssign
 
@@ -56,14 +57,14 @@ sidebar: auto
 
 ## banner
 
-- 类型: 
+- 类型:
 
 ```
 string | { author: any; license: string: name: string; version: string } | boolean
 
 ```
 
-在输出包的顶部插入版权消息。设置为`ture`，pansy会自动读取`package.json`中的数据
+在输出包的顶部插入版权消息。设置为`ture`，pansy 会自动读取`package.json`中的数据
 
 ## bundleNodeModules
 
@@ -76,12 +77,11 @@ string | { author: any; license: string: name: string; version: string } | boole
 
 - cli `--bundle-node-modules`
 
-
-在打包文件中包含node module。请注意，对于UMD格式包始终包含。
+在打包文件中包含 node module。请注意，对于 UMD 格式包始终包含。
 
 ## env
 
-- 类型: 
+- 类型:
 
 ```
 {
@@ -112,7 +112,7 @@ pansy --env.NODE_ENV production
 
 - 类型: `function`
 
-扩展Pansy配置
+扩展 Pansy 配置
 
 ## extendRollupConfig
 
@@ -122,11 +122,11 @@ pansy --env.NODE_ENV production
 (config: RollupConfig) => RollupConfig
 ```
 
-扩展生成的rollup配置
+扩展生成的 rollup 配置
 
 ## externals
 
-- 类型: 
+- 类型:
 
 ```
 (string | RegExp | function)[]
@@ -146,7 +146,7 @@ pansy --env.NODE_ENV production
 import $ from 'jquery';
 ```
 
-您可以将jquery模块ID`$`映射到全局变量：
+您可以将 jquery 模块 ID`$`映射到全局变量：
 
 ```javascript
 // pansy.config.js
@@ -154,7 +154,7 @@ export default {
   globals: {
     jquery: '$'
   }
-}
+};
 ```
 
 ## input
@@ -217,14 +217,13 @@ string | GetFileName
 - 默认
 
 * `cjs` 和 `esm` 格式化为 `[name][min][ext]`
-* 其他包格式化为`[name][min].[format].js` 
-
+* 其他包格式化为`[name][min].[format].js`
 
 占位符：
 
 [name]：输入文件的基本名称
 [format]：输出格式
-[min]：当格式以-min结尾时，它将替换为.min，否则为空字符串。
+[min]：当格式以-min 结尾时，它将替换为.min，否则为空字符串。
 
 - cli `--file-name <fileName>`
 
@@ -241,13 +240,13 @@ Format | Format[]
 - 默认 `cjs`
 - cli `--format <format>`
 
-输出格式。 您可以将min附加到格式中以生成缩小的包。
+输出格式。 您可以将 min 附加到格式中以生成缩小的包。
 
 ### output.minify
 
 - 类型 `boolean`
 
-是否缩小输出文件而不考虑格式，使用此选项不会在输出文件名后添加.min后缀。
+是否缩小输出文件而不考虑格式，使用此选项不会在输出文件名后添加.min 后缀。
 
 ### output.moduleName
 
@@ -259,13 +258,13 @@ Format | Format[]
 
 - 类型 `boolean`
 
-是否生成source maps
+是否生成 source maps
 
 ### output.sourceMapExcludeSources
 
 - 类型 `boolean`
 
-在source maps中排除源代码
+在 source maps 中排除源代码
 
 ### output.target
 

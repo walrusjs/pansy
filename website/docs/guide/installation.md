@@ -1,20 +1,20 @@
 # 安装
 
-pansy需要[Node.js](https://nodejs.org/en/)或更高版本
+pansy 需要[Node.js](https://nodejs.org/en/)或更高版本
 
 ```bash
 # 检查Node版本
 node -v
 ```
 
-使用npm在本地安装Pansy作为dev依赖项：
+使用 npm 在本地安装 Pansy 作为 dev 依赖项：
 
 ```bash
 cd your-project
 npm i @pansy/cli --dev
 ```
 
-也可以使用yarn安装
+也可以使用 yarn 安装
 
 ```bash
 cd your-project

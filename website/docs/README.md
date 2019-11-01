@@ -20,7 +20,7 @@ footer: MIT Licensed | Copyright © 2019 Walrus
   </div>
 </div>
 
-``` bash
+```bash
 # 切换到项目目录
 cd ./my-project
 

@@ -1,4 +1,4 @@
-module.exports = ctx => ({
+module.exports = (ctx) => ({
   title: 'Pansy',
   description: 'A zero configuration library bundler.',
   theme: '@vuepress/vue',
@@ -24,12 +24,7 @@ module.exports = ctx => ({
         {
           title: '指南',
           collapsable: false,
-          children: [
-            '',
-            'installation',
-            'configuration-file',
-            'plugins'
-          ]
+          children: ['', 'installation', 'configuration-file', 'plugins']
         },
         {
           title: '高级',
@@ -47,10 +42,13 @@ module.exports = ctx => ({
   },
   plugins: [
     ['@vuepress/back-to-top', true],
-    ['@vuepress/pwa', {
-      serviceWorker: true,
-      updatePopup: true
-    }],
+    [
+      '@vuepress/pwa',
+      {
+        serviceWorker: true,
+        updatePopup: true
+      }
+    ],
     ['@vuepress/medium-zoom', true]
   ]
 });
