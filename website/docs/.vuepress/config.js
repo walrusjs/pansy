@@ -17,7 +17,7 @@ module.exports = (ctx) => ({
       },
       {
         text: 'GitHub',
-        link: 'https://github.com/vuejs/vuepress/blob/master/CHANGELOG.md'
+        link: 'https://github.com/walrus-plus/pansy'
       }
     ],
     sidebar: {
