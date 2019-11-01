@@ -1,5 +1,6 @@
 module.exports = (ctx) => ({
   title: 'Pansy',
+  dest: 'public',
   description: 'A zero configuration library bundler.',
   theme: '@vuepress/vue',
   themeConfig: {
