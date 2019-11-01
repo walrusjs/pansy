@@ -19,3 +19,41 @@ A zero configuration library bundler.
 - 💅 内置支持 `CSS` `Sass` `Stylus` `Less` `CSS modules`
 - 🚨 友好的错误记录。
 - 💻 支持 TypeScript
+
+## 📦 安装
+
+* npm安装
+
+```bash
+npm install @pansy/cli --dev --save
+```
+
+* yarn安装
+
+```bash
+yarn add @pansy/cli --dev
+```
+
+## 🔨 使用
+
+* 创建入口文件
+
+```
+// src/index.js
+const test = 'Hello World';
+
+export function main() {
+  console.log(test);
+}
+```
+
+* 执行编译
+
+```bash
+cd /my-project
+pansy
+```
+
+## 📝 文档
+
+https://pansy.now.sh
