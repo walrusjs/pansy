@@ -22,13 +22,13 @@ A zero configuration library bundler.
 
 ## 📦 安装
 
-* npm安装
+- npm 安装
 
 ```bash
 npm install @pansy/cli --dev --save
 ```
 
-* yarn安装
+- yarn 安装
 
 ```bash
 yarn add @pansy/cli --dev
@@ -36,7 +36,7 @@ yarn add @pansy/cli --dev
 
 ## 🔨 使用
 
-* 创建入口文件
+- 创建入口文件
 
 ```
 // src/index.js
@@ -47,7 +47,7 @@ export function main() {
 }
 ```
 
-* 执行编译
+- 执行编译
 
 ```bash
 cd /my-project
