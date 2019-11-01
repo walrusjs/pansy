@@ -20,6 +20,8 @@
     "lint": "walrus lint",
     "lint:commit": "walrus commitlint --env HUSKY_GIT_PARAMS",
     "prettier": "walrus prettier",
+    "docs:start": "cd ./website && yarn start",
+    "docs:build": "cd ./website && yarn build",
     "prepublishOnly": "yarn types && yarn build"
   },
   "repository": "git@github.com:walrus-plus/pansy.git",

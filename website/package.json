@@ -1,0 +1,19 @@
+{
+  "name": "@pansy/docs",
+  "version": "1.0.0",
+  "description": "pansy docs",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "vuepress dev docs",
+    "build": "vuepress build docs"
+  },
+  "devDependencies": {
+    "@vuepress/plugin-back-to-top": "^1.2.0",
+    "@vuepress/plugin-medium-zoom": "^1.2.0",
+    "@vuepress/plugin-pwa": "^1.2.0",
+    "@vuepress/theme-vue": "^1.2.0",
+    "vuepress": "^1.2.0"
+  }
+}
