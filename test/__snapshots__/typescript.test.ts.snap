@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Typescript: Typescript dist/index.js 1`] = `
+"'use strict';
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+function greeter(person) {
+  return 'Hello, ' + person.firstName + ' ' + person.lastName;
+}
+
+let user = {
+  firstName: 'Jane',
+  lastName: 'User'
+};
+let s = greeter(user);
+
+exports.s = s;
+"
+`;

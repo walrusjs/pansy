@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`banner:object: banner:object dist/default.js 1`] = `
+"/*!
+ * pansy v1.0.0
+ * (c) 阿康
+ * Released under the MIT License.
+ */
+'use strict';
+
+var _default = {};
+
+module.exports = _default;
+"
+`;
+
+exports[`banner:string: banner:string dist/default.js 1`] = `
+"hello world
+'use strict';
+
+var _default = {};
+
+module.exports = _default;
+"
+`;
+
+exports[`banner:true default: banner:true default dist/index.js 1`] = `
+"/*!
+ * foo v0.0.1
+ * (c) name <email@email.com>
+ * Released under the MIT License.
+ */
+'use strict';
+
+var index = 42;
+
+module.exports = index;
+"
+`;

@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`babel:disable-config: babel:disable-config dist/index.js 1`] = `
+"'use strict';
+
+class index {}
+
+module.exports = index;
+"
+`;
+
+exports[`babel:object-rest-spread: babel:object-rest-spread dist/index.js 1`] = `
+"'use strict';
+
+var index = Object.assign({}, a);
+
+module.exports = index;
+"
+`;
+
+exports[`babel:with-config: babel:with-config dist/index.js 1`] = `
+"'use strict';
+
+class index {}
+
+module.exports = index;
+"
+`;
