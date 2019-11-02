@@ -251,7 +251,7 @@ type Format =
   | 'iife-min'
   | 'amd-min'
   | 'system-min';
-  
+
 Format | Format[]
 ```
 
