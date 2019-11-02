@@ -244,7 +244,8 @@ export class Bundler {
         ),
 
       // 默认关闭，可手动开启
-      strip: config.plugins.strip &&
+      strip:
+        config.plugins.strip &&
         merge(
           {
             functions: ['console.log']
