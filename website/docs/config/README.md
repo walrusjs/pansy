@@ -234,6 +234,24 @@ string | GetFileName
 - 类型
 
 ```
+type Format =
+  | 'amd'
+  | 'cjs'
+  | 'commonjs'
+  | 'es'
+  | 'esm'
+  | 'iife'
+  | 'module'
+  | 'system'
+  | 'umd';
+  | 'cjs-min'
+  | 'es-min'
+  | 'esm-min'
+  | 'umd-min'
+  | 'iife-min'
+  | 'amd-min'
+  | 'system-min';
+  
 Format | Format[]
 ```
 
