@@ -38,6 +38,7 @@
     "@walrus/shared-utils": "^0.2.2",
     "babel-plugin-alter-object-assign": "^1.0.2",
     "babel-plugin-transform-async-to-promises": "^0.8.15",
+    "less": "^3.10.3",
     "ora": "^4.0.2",
     "rollup": "^1.26.0",
     "rollup-plugin-babel": "^4.3.3",
