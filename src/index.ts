@@ -253,7 +253,8 @@ export class Bundler {
           config.plugins.strip
         ),
 
-      alias: config.plugins.alias !== false &&
+      alias:
+        config.plugins.alias !== false &&
         merge(
           {
             entries: {
