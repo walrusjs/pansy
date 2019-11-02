@@ -243,7 +243,7 @@ export class Bundler {
           config.plugins.buble
         ),
 
-      // 默认关闭，可手动开启
+      // 默认关闭，可手动开启 - 删除调试信息
       strip:
         config.plugins.strip &&
         merge(

@@ -1,0 +1,7 @@
+{
+  "private": true,
+  "dependencies": {
+    "rollup-plugin-vue": "^4.6.2",
+    "vue-template-compiler": "^2.5.17"
+  }
+}

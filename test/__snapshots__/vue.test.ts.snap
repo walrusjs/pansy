@@ -7,7 +7,7 @@ exports[`vue plugin: vue plugin dist/component.js 1`] = `
 
 function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
 
-var __vue_normalize__ = _interopDefault(require('../../../node_modules/rollup-plugin-vue/runtime/normalize.js'));
+var __vue_normalize__ = _interopDefault(require('vue-runtime-helpers/dist/normalize-component.js'));
 
 //
 //
@@ -56,12 +56,10 @@ const __vue_is_functional_template__ = false;
 
 /* style inject SSR */
 
-/* style inject shadow dom */
-
 var component = __vue_normalize__({
   render: __vue_render__,
   staticRenderFns: __vue_staticRenderFns__
-}, __vue_inject_styles__, __vue_script__, __vue_scope_id__, __vue_is_functional_template__, __vue_module_identifier__, false, undefined, undefined, undefined);
+}, __vue_inject_styles__, __vue_script__, __vue_scope_id__, __vue_is_functional_template__, __vue_module_identifier__, undefined, undefined);
 
 module.exports = component;
 "
