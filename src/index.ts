@@ -253,6 +253,16 @@ export class Bundler {
           config.plugins.strip
         ),
 
+      alias: config.plugins.alias !== false &&
+        merge(
+          {
+            entries: {
+              '@': this.resolveRootDir('src')
+            }
+          },
+          config.plugins.postcss
+        ),
+
       commonjs:
         config.plugins.commonjs !== false &&
         merge({}, config.plugins.commonjs, {
