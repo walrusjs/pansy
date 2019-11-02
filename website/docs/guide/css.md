@@ -20,6 +20,8 @@ module.exports = {
 
 ## Css 预处理器
 
+**注意:** 内置支持less，可直接使用
+
 `rollup-plugin-postcss` 还支持常见的 CSS 预处理器，例如 Sass：
 
 ```bash
@@ -28,12 +30,8 @@ yarn add node-sass --dev
 
 然后，您可以导入`.scss`或`.sass`文件。
 
-对于`Stylus`和`Less`，您还需要在项目中安装`stylus`和`less`。
+对于`Stylus`，您还需要在项目中安装`stylus`。
 
 ```bash
-// 使用stylus
 yarn add stylus --dev
-
-// 使用less
-yarn add less --dev
 ```
