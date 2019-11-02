@@ -1,5 +1,5 @@
 const a = { a: 1 };
 
 export default async () => {
-  return { ...a, b }
-}
+  return { ...a, b };
+};

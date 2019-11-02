@@ -4,10 +4,10 @@ const tt = 'is there anything?';
 
 function afun() {
   console.log('test');
-  return tt
+  return tt;
 }
 
 export function another() {
   console.log('two');
-  return afun()
+  return afun();
 }

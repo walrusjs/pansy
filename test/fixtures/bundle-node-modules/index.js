@@ -1,4 +1,4 @@
-import all from 'some-package-that-does-not-exists'
+import all from 'some-package-that-does-not-exists';
 import pokemon from 'pokemon';
 
-export default { all, pokemon }
+export default { all, pokemon };

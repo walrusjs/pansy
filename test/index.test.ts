@@ -29,12 +29,12 @@ snapshot(
     },
     extendConfig(config, { format }) {
       if (format === 'umd') {
-        config.output.moduleName = 'umd'
+        config.output.moduleName = 'umd';
       }
       if (format.endsWith('-min')) {
-        config.output.moduleName = 'min'
+        config.output.moduleName = 'min';
       }
-      return config
+      return config;
     }
   }
 );

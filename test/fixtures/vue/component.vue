@@ -11,7 +11,7 @@ export default {
   data: () => ({
     name: 'Tom'
   })
-}
+};
 </script>
 
 <style scoped>
