@@ -1,0 +1,9 @@
+{
+  "extends": "../../tsconfig",
+  "compilerOptions": {
+    "declaration": true,
+    "lib": ["esnext", "dom"],
+    "jsx": "react"
+  },
+  "include": ["./src"]
+}

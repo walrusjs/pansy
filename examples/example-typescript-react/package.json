@@ -1,0 +1,19 @@
+{
+  "name": "example-typescript-react",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "build": "rm -rf dist && node ../../lib/cli"
+  },
+  "dependencies": {
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.11",
+    "@types/react-dom": "^16.9.3",
+    "typescript": "^3.6.4"
+  }
+}
