@@ -20,7 +20,7 @@ module.exports = {
 
 ## Css 预处理器
 
-**注意:** 内置支持less，可直接使用
+**注意:** 内置支持 less，可直接使用
 
 `rollup-plugin-postcss` 还支持常见的 CSS 预处理器，例如 Sass：
 

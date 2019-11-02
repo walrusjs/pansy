@@ -4,7 +4,7 @@ const config = {
   },
   output: {
     format: 'esm'
-  },
+  }
 };
 
 export default config;

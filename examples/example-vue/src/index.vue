@@ -3,17 +3,17 @@
 </template>
 
 <script>
-  export default {
-    data () {
-      return {
-        message: 'Hello world!'
-      }
-    }
+export default {
+  data() {
+    return {
+      message: 'Hello world!'
+    };
   }
+};
 </script>
 
 <style>
-  .example {
-    color: red;
-  }
+.example {
+  color: red;
+}
 </style>
