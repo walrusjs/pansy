@@ -14,11 +14,12 @@ A zero configuration library bundler.
 - 🚀 快速，默认情况下零配置
 - 📦 基于 rollup 进行打包
 - 🚗 基于 Buble/Babel/TypeScript 自动转换 JS 文件
-- 🎶 易于使用的`Rollup`插件
-- 🎓 支持 `lerna` -- 待开发
+- 🎶 如果需要，很容易使用Rollup插件目录
+- 🐚 支持别名设置，默认`@`指向项目`src`目录
+- 🎓 支持 `lerna` -- 待支持
 - 💅 内置支持 `CSS` `Sass` `Stylus` `Less` `CSS modules`
 - 🚨 友好的错误记录。
-- 💻 支持 TypeScript
+- 💻 使用TypeScript编写
 
 ## 📦 安装
 
