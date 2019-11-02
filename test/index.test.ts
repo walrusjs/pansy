@@ -92,3 +92,16 @@ snapshot(
     }
   }
 );
+
+snapshot(
+  {
+    title: 'custom rollup plugin',
+    input: 'index.js',
+    cwd: fixture('custom-rollup-plugin')
+  },
+  {
+    plugins: {
+      strip: true
+    }
+  }
+);

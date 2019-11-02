@@ -48,6 +48,25 @@ module.exports = index;
 "
 `;
 
+exports[`custom rollup plugin: custom rollup plugin dist/index.js 1`] = `
+"'use strict';
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+const tt = 'is there anything?';
+
+function afun() {
+  return tt;
+}
+
+function another() {
+  return afun();
+}
+
+exports.another = another;
+"
+`;
+
 exports[`defaults: defaults dist/index.js 1`] = `
 "'use strict';
 

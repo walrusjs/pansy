@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`vue plugin: vue plugin dist/component.css 1`] = `".main-content[data-v-50cf076c]{margin:0 auto;font-family:sans-serif;background-color:#ccf7e2;padding:10px;border-radius:5px;max-width:500px}"`;
+exports[`vue plugin: vue plugin dist/component.css 1`] = `".main-content[data-v-01464b19]{margin:0 auto;font-family:sans-serif;background-color:#ccf7e2;padding:10px;border-radius:5px;max-width:500px}"`;
 
 exports[`vue plugin: vue plugin dist/component.js 1`] = `
 "'use strict';
@@ -45,7 +45,7 @@ var __vue_staticRenderFns__ = [];
 const __vue_inject_styles__ = undefined;
 /* scoped */
 
-const __vue_scope_id__ = \\"data-v-50cf076c\\";
+const __vue_scope_id__ = \\"data-v-01464b19\\";
 /* module identifier */
 
 const __vue_module_identifier__ = undefined;

@@ -243,6 +243,15 @@ export class Bundler {
           config.plugins.buble
         ),
 
+      // 默认关闭，可手动开启
+      strip: config.plugins.strip &&
+        merge(
+          {
+            functions: ['console.log']
+          },
+          config.plugins.strip
+        ),
+
       commonjs:
         config.plugins.commonjs !== false &&
         merge({}, config.plugins.commonjs, {
@@ -300,7 +309,12 @@ export class Bundler {
         return config.resolvePlugins[name];
       }
 
+      // 是否是@rollup/plugin-*形式的内置包
+      const isOfficialBuiltIn = require('../package').dependencies[`@rollup/plugin-${name}`];
+
+      // 是否是rollup-plugin-*形式的内置包
       const isBuiltIn = require('../package').dependencies[`rollup-plugin-${name}`];
+
       const plugin =
         name === 'babel'
           ? import('./plugins/babel').then((res) => res.default)
@@ -308,6 +322,8 @@ export class Bundler {
           ? nodeResolvePlugin
           : name === 'progress'
           ? progressPlugin
+          : isOfficialBuiltIn
+          ? require(`@rollup/plugin-${name}`)
           : isBuiltIn
           ? require(`rollup-plugin-${name}`)
           : this.localRequire(`rollup-plugin-${name}`);
