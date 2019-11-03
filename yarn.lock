@@ -1444,9 +1444,9 @@
     read-pkg-up "^7.0.0"
 
 "@testing-library/jest-dom@^4.1.0":
-  version "4.2.0"
-  resolved "https://registry.yarnpkg.com/@testing-library/jest-dom/-/jest-dom-4.2.0.tgz#32f8df3a78511b347d39374ea89dc8e0a1c2fb69"
-  integrity sha512-H61OmRhGPWLrj9emyISx0qjp8jvC9RWyRniuLAq75Ny5XfPiOvWfnY3Wm2Tf0HXusX+PG40I94Gw792IAtSKKg==
+  version "4.2.3"
+  resolved "https://registry.yarnpkg.com/@testing-library/jest-dom/-/jest-dom-4.2.3.tgz#2b40d463d6cb00b5550d04381912e048e8e35966"
+  integrity sha512-lrsm8OMaOLjh8AJhTNZW85Vur+a2U00ej1r/dNzABN4vfJ2kllsP/eLgkOdfCHuspdXn3/Q6rLt/41dSueVCyg==
   dependencies:
     "@babel/runtime" "^7.5.1"
     chalk "^2.4.1"
@@ -1691,18 +1691,23 @@
     lodash.unescape "4.0.1"
     semver "^6.3.0"
 
-"@walrus/cli@^0.2.2":
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/@walrus/cli/-/cli-0.2.2.tgz#1a1e7a716fa03507c6043e968196016fb7b0df9c"
-  integrity sha512-EVN+FBwpN1FEary8Bl86Ft2nJUctDLIhDpvXmq7N3cgGnc9MVl0sdkqOF00CTQrAwNnaC7EhNKwWgLQclcjL4w==
+"@walrus/cli@^0.2.3":
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/@walrus/cli/-/cli-0.2.3.tgz#f21616ca9f6b9974d4668691e50928872ed8d26d"
+  integrity sha512-DKPewHbhj8pwdyVf63q4SwM0WDBSBxulj90aJKl8xMluBGQdNRcV2y27OF24I+TncDf3l8pNbrM2geeHQXjbEg==
   dependencies:
-    "@walrus/shared-utils" "^0.2.2"
-    "@walrus/types" "^0.2.2"
-    "@walrus/walrus-plugin-commitlint" "^0.2.2"
-    "@walrus/walrus-plugin-eslint" "^0.2.2"
-    "@walrus/walrus-plugin-jest" "^0.2.2"
-    "@walrus/walrus-plugin-prettier" "^0.2.2"
-    "@walrus/walrus-plugin-stylelint" "^0.2.2"
+    "@walrus/shared-utils" "^0.2.3"
+    "@walrus/types" "^0.2.3"
+    "@walrus/walrus-plugin-commitlint" "^0.2.3"
+    "@walrus/walrus-plugin-eslint" "^0.2.3"
+    "@walrus/walrus-plugin-jest" "^0.2.3"
+    "@walrus/walrus-plugin-prettier" "^0.2.3"
+    "@walrus/walrus-plugin-stylelint" "^0.2.3"
+
+"@walrus/eslint-config@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@walrus/eslint-config/-/eslint-config-1.0.0.tgz#3a54bf740453008e1449e3746582cbfd28acc89a"
+  integrity sha512-5JNC45MgXciLtzkAuACrTvqr3ZcWp5c/cELqS1jw3Ix3Vx+RN06/sYWAfFcmKvxCQfmywrqVU6ZtcUWV/HAOhQ==
 
 "@walrus/shared-utils@^0.2.2":
   version "0.2.2"
@@ -1726,51 +1731,72 @@
     semver "^6.3.0"
     slash2 "^2.0.0"
 
-"@walrus/types@^0.2.2":
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/@walrus/types/-/types-0.2.2.tgz#556dbd514de672c132e32d2072617dc044887082"
-  integrity sha512-oiK8yuNNWa+foKNCsFvqREelu8umz26BZ+8Uc+eCSmCgsSEuIQXhBoyVcNi9SlWiqfKDfA7/qneqIQR5vojspw==
+"@walrus/shared-utils@^0.2.3":
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/@walrus/shared-utils/-/shared-utils-0.2.3.tgz#cb4ba4c2037e733d10ca2551f32118d0262aaa20"
+  integrity sha512-JzaeplmvDYaRChTo+YnGzbDBiXGZjguMT0spGPDIwniAHkVTHK71+XXiDMDuC2DWrUqqqwFgGa5h9II2wi+U6Q==
+  dependencies:
+    "@babel/core" "^7.6.2"
+    "@babel/preset-env" "^7.6.2"
+    "@babel/preset-typescript" "^7.6.0"
+    "@types/debug" "^4.1.5"
+    "@types/lodash" "^4.14.139"
+    "@types/semver" "^6.0.2"
+    chalk "^2.4.2"
+    debug "^4.1.1"
+    is-url "^1.2.4"
+    joycon "^2.2.5"
+    lodash "^4.17.15"
+    minimist "^1.2.0"
+    read-pkg "^5.2.0"
+    require-from-string "^2.0.2"
+    semver "^6.3.0"
+    slash2 "^2.0.0"
+
+"@walrus/types@^0.2.3":
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/@walrus/types/-/types-0.2.3.tgz#15e05f6a679602b701e470f6212d863aee35aa5f"
+  integrity sha512-SGSDbame4n/3QNGJ5EkYeDbbnyeCCQDmxeG4DxtWZhM3YXllI5XY/iueWLWJohq2P2j7jaWH5HEeDRHYjLzPrw==
   dependencies:
     "@types/debug" "^4.1.5"
     "@types/lodash" "^4.14.138"
     "@types/signale" "^1.2.1"
 
-"@walrus/walrus-plugin-commitlint@^0.2.2":
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/@walrus/walrus-plugin-commitlint/-/walrus-plugin-commitlint-0.2.2.tgz#20ca49e42253da5a3548475b405897b919297a8e"
-  integrity sha512-3mHKydrTR9n3FR4wn+mJARGlV6aHrJ0jXsXNhJuxnfhs7dm+tzqETyr57WP8U8S0CqOeDRrxyctiaYla19KnZA==
+"@walrus/walrus-plugin-commitlint@^0.2.3":
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/@walrus/walrus-plugin-commitlint/-/walrus-plugin-commitlint-0.2.3.tgz#6015176605fa04b397637e881d390eaaa355b3d4"
+  integrity sha512-9KnjAhBL3+qrXnTUFgAs77wyTRXqi7nTOij8YKP20rXzscjuSpJwzFysDGhHgxtSYLsZ873Qo3RrCssSghTF/g==
   dependencies:
     "@commitlint/format" "^8.2.0"
     "@commitlint/lint" "^8.2.0"
     "@commitlint/read" "^8.2.0"
-    "@walrus/shared-utils" "^0.2.2"
-    "@walrus/types" "^0.2.2"
+    "@walrus/shared-utils" "^0.2.3"
+    "@walrus/types" "^0.2.3"
     get-stdin "^7.0.0"
     resolve-from "^5.0.0"
     resolve-global "^1.0.0"
 
-"@walrus/walrus-plugin-eslint@^0.2.2":
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/@walrus/walrus-plugin-eslint/-/walrus-plugin-eslint-0.2.2.tgz#120f25c6a0e414130697d028c34d183ba5a2185f"
-  integrity sha512-+GFaHzk+jv6rgUw6MoJiSNNxF5EDJghDGCfe3XSO+foRsoj/SMRUcFR8e99dFnR1LAfzBVuunXwRdQN39j9zLg==
+"@walrus/walrus-plugin-eslint@^0.2.3":
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/@walrus/walrus-plugin-eslint/-/walrus-plugin-eslint-0.2.3.tgz#c9d3b88478c29dc1253855e32ada6cb92e8e6cfd"
+  integrity sha512-VEGdkKWonuot7gBGhu05a/ZpUYjRHeeMJmRZxqB51svUCpqkJQm9hwHkexMJWCURQkZVobR2yD4PksvnBwV9OA==
   dependencies:
     "@typescript-eslint/eslint-plugin" "^2.3.3"
     "@typescript-eslint/parser" "^2.3.3"
-    "@walrus/shared-utils" "^0.2.2"
-    "@walrus/types" "^0.2.2"
+    "@walrus/eslint-config" "^1.0.0"
+    "@walrus/shared-utils" "^0.2.3"
+    "@walrus/types" "^0.2.3"
     babel-eslint "^10.0.3"
     deglob "^4.0.1"
     eslint "^6.5.1"
-    eslint-config-alloy "^3.0.0"
     eslint-plugin-react "^7.16.0"
     get-stdin "^7.0.0"
     pkg-conf "^3.1.0"
-    typescript "^3.6.3"
 
-"@walrus/walrus-plugin-jest@^0.2.2":
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/@walrus/walrus-plugin-jest/-/walrus-plugin-jest-0.2.2.tgz#2270ed9e7bee9cde64a13b2c25b60f435de22680"
-  integrity sha512-2ZtgN9SoQ+Fo7PzM/+N66m2uF+ntjanYfCmM2BFec05Qr+58znUySY6RaBuNJyGPd0QwwO9rHpBpsFSTvtgStA==
+"@walrus/walrus-plugin-jest@^0.2.3":
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/@walrus/walrus-plugin-jest/-/walrus-plugin-jest-0.2.3.tgz#38833675254619b169452d42ce0e3084973fedc0"
+  integrity sha512-bL7MU1c4PjQKKtj85sdwddgkaetdRRyofkkKAmcwwlDbePLouq9PdPViHpTXTkG9kaZEXiD9MiwixFchnxir+g==
   dependencies:
     "@babel/core" "^7.6.2"
     "@babel/plugin-transform-modules-commonjs" "^7.6.0"
@@ -1778,8 +1804,8 @@
     "@jest/types" "^24.9.0"
     "@testing-library/jest-dom" "^4.1.0"
     "@types/jest" "^24.0.18"
-    "@walrus/shared-utils" "^0.2.2"
-    "@walrus/types" "^0.2.2"
+    "@walrus/shared-utils" "^0.2.3"
+    "@walrus/types" "^0.2.3"
     babel-core "7.0.0-bridge.0"
     babel-jest "^24.9.0"
     babel-plugin-module-resolver "^3.2.0"
@@ -1803,26 +1829,26 @@
     ts-jest "^24.1.0"
     typescript "^3.6.3"
 
-"@walrus/walrus-plugin-prettier@^0.2.2":
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/@walrus/walrus-plugin-prettier/-/walrus-plugin-prettier-0.2.2.tgz#eb7d102dbe3a3432540c737cf6642132d4e0bafd"
-  integrity sha512-tVWsXX9ltNqZFBBLPGNYb1uIuM2pm0B86+Bhu4pGfYlvaBOm6sj++b6DveQH/Ja0qJiguhNJojQQZ/Sez0sE9Q==
+"@walrus/walrus-plugin-prettier@^0.2.3":
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/@walrus/walrus-plugin-prettier/-/walrus-plugin-prettier-0.2.3.tgz#00fd34e269537008feae764789872b37652058ae"
+  integrity sha512-TzXxXDf2w7W88fMiIjiAX6aq/1D3CzwOdKkgT0Fg9WlMKjdgVvDOyLl7zNkBTh1lbSSz8eZxiDUpup3CJMrd9g==
   dependencies:
     "@commitlint/load" "^8.2.0"
-    "@walrus/shared-utils" "^0.2.2"
-    "@walrus/types" "^0.2.2"
+    "@walrus/shared-utils" "^0.2.3"
+    "@walrus/types" "^0.2.3"
     execa "^3.2.0"
     find-up "^4.1.0"
     ignore "^5.1.4"
     multimatch "^4.0.0"
     prettier "^1.18.2"
 
-"@walrus/walrus-plugin-stylelint@^0.2.2":
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/@walrus/walrus-plugin-stylelint/-/walrus-plugin-stylelint-0.2.2.tgz#dea169b1f9f0002099c70eea3a6a5acf37f0a026"
-  integrity sha512-IZJ+3oMv+cPFZYVGslJGXGyuQNBaBHbim2uC1bqlQMXpyFX34GE/pvZHrhR896Fno8UjRRlKgEHE6miks6LFqQ==
+"@walrus/walrus-plugin-stylelint@^0.2.3":
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/@walrus/walrus-plugin-stylelint/-/walrus-plugin-stylelint-0.2.3.tgz#69cafaf73e707f2920fb9ef2cc95567c87ee184a"
+  integrity sha512-E4OQIiHMe96MBJDa6edZS0cROCIj6/pW/RPJX/+y8yYLTMAi8hhGFT1DgxdKEQXmkwvNcffaYm10hSLs0EBgdA==
   dependencies:
-    "@walrus/shared-utils" "^0.2.2"
+    "@walrus/shared-utils" "^0.2.3"
     stylelint "^10.0.1"
     stylelint-config-prettier "^5.2.0"
     stylelint-config-rational-order "^0.1.2"
@@ -2202,16 +2228,16 @@ atob@^2.1.1:
   integrity sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg==
 
 autoprefixer@^9.0.0, autoprefixer@^9.5.1:
-  version "9.7.0"
-  resolved "https://registry.yarnpkg.com/autoprefixer/-/autoprefixer-9.7.0.tgz#905ec19e50f04545fe9ff131182cc9ab25246901"
-  integrity sha512-j2IRvaCfrUxIiZun9ba4mhJ2omhw4OY88/yVzLO+lHhGBumAAK72PgM6gkbSN8iregPOn1ZlxGkmZh2CQ7X4AQ==
+  version "9.7.1"
+  resolved "https://registry.yarnpkg.com/autoprefixer/-/autoprefixer-9.7.1.tgz#9ffc44c55f5ca89253d9bb7186cefb01ef57747f"
+  integrity sha512-w3b5y1PXWlhYulevrTJ0lizkQ5CyqfeU6BIRDbuhsMupstHQOeb1Ur80tcB1zxSu7AwyY/qCQ7Vvqklh31ZBFw==
   dependencies:
     browserslist "^4.7.2"
-    caniuse-lite "^1.0.30001004"
+    caniuse-lite "^1.0.30001006"
     chalk "^2.4.2"
     normalize-range "^0.1.2"
     num2fraction "^1.2.2"
-    postcss "^7.0.19"
+    postcss "^7.0.21"
     postcss-value-parser "^4.0.2"
 
 aws-sign2@~0.7.0:
@@ -2731,7 +2757,7 @@ caniuse-api@^3.0.0:
     lodash.memoize "^4.1.2"
     lodash.uniq "^4.5.0"
 
-caniuse-lite@^1.0.0, caniuse-lite@^1.0.30001004:
+caniuse-lite@^1.0.0, caniuse-lite@^1.0.30001004, caniuse-lite@^1.0.30001006:
   version "1.0.30001006"
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001006.tgz#5b6e8288792cfa275f007b2819a00ccad7112655"
   integrity sha512-MXnUVX27aGs/QINz+QG1sWSLDr3P1A3Hq5EUWoIt0T7K24DuvMxZEnh3Y5aHlJW6Bz2aApJdSewdYLd8zQnUuw==
@@ -3260,9 +3286,9 @@ core-js@^2.4.0:
   integrity sha512-I39t74+4t+zau64EN1fE5v2W31Adtc/REhzWN+gWRRXg6WH5qAsZm62DHpQ1+Yhe4047T55jvzz7MUqF/dBBlA==
 
 core-js@^3.2.1:
-  version "3.3.5"
-  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.3.5.tgz#58d20f48a95a07304b62ff752742b82b56431ed8"
-  integrity sha512-0J3K+Par/ZydhKg8pEiTcK/9d65/nqJOzY62uMkjeBmt05fDOt/khUVjDdh8TpeIuGQDy1yLDDCjiWN/8pFIuw==
+  version "3.3.6"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.3.6.tgz#6ad1650323c441f45379e176ed175c0d021eac92"
+  integrity sha512-u4oM8SHwmDuh5mWZdDg9UwNVq5s1uqq6ZDLLIs07VY+VJU91i3h4f3K/pgFvtUQPGdeStrZ+odKyfyt4EnKHfA==
 
 core-util-is@1.0.2, core-util-is@~1.0.0:
   version "1.0.2"
@@ -4097,11 +4123,6 @@ escodegen@^1.9.1:
     optionator "^0.8.1"
   optionalDependencies:
     source-map "~0.6.1"
-
-eslint-config-alloy@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-alloy/-/eslint-config-alloy-3.0.0.tgz#4333c6189efc8d659a2ec2c27862dde4c095e1ba"
-  integrity sha512-kTHT4+1kT70SzXSJ7tkmb6JGbJGaSX87sg1cXzUSNKxAGjTwY6IJDGS8i+l3/OHxv+w1qXbZO8xqsJcE38kb0Q==
 
 eslint-plugin-react@^7.16.0:
   version "7.16.0"
@@ -7041,6 +7062,15 @@ magic-string@^0.25.1, magic-string@^0.25.2, magic-string@^0.25.3:
   dependencies:
     sourcemap-codec "^1.4.4"
 
+majestic@^1.6.1:
+  version "1.6.1"
+  resolved "https://registry.yarnpkg.com/majestic/-/majestic-1.6.1.tgz#a18fd18c850db60ce47494cf6e2182ac16c22753"
+  integrity sha512-ogZ/5JcJLUZU51fKW8/sOdV5bwvsiK6rzE1Wju0nRmZoYACb77TZLeMONaltpJAC8Y7O9IDilz/dkzBEyz8mgg==
+  dependencies:
+    node-fetch "^2.3.0"
+    open "^6.0.0"
+    read-pkg-up "^4.0.0"
+
 make-dir@^1.0.0:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/make-dir/-/make-dir-1.3.0.tgz#79c1033b80515bd6d24ec9933e860ca75ee27f0c"
@@ -8010,6 +8040,13 @@ onetime@^5.1.0:
   dependencies:
     mimic-fn "^2.1.0"
 
+open@^6.0.0:
+  version "6.4.0"
+  resolved "https://registry.yarnpkg.com/open/-/open-6.4.0.tgz#5c13e96d0dc894686164f18965ecfe889ecfc8a9"
+  integrity sha512-IFenVPgF70fSm1keSd2iDBIDIBZkroLeuffXq+wKTzTJlBpesFWojV9lb8mzOfaAzM1sr7HQHuO0vtV0zYekGg==
+  dependencies:
+    is-wsl "^1.1.0"
+
 opener@^1.5.1:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/opener/-/opener-1.5.1.tgz#6d2f0e77f1a0af0032aca716c2c1fbb8e7e8abed"
@@ -8903,7 +8940,7 @@ postcss@^6.0.1:
     source-map "^0.6.1"
     supports-color "^5.4.0"
 
-postcss@^7.0.0, postcss@^7.0.1, postcss@^7.0.13, postcss@^7.0.14, postcss@^7.0.17, postcss@^7.0.19, postcss@^7.0.2, postcss@^7.0.21, postcss@^7.0.5, postcss@^7.0.7:
+postcss@^7.0.0, postcss@^7.0.1, postcss@^7.0.13, postcss@^7.0.14, postcss@^7.0.17, postcss@^7.0.2, postcss@^7.0.21, postcss@^7.0.5, postcss@^7.0.7:
   version "7.0.21"
   resolved "https://registry.yarnpkg.com/postcss/-/postcss-7.0.21.tgz#06bb07824c19c2021c5d056d5b10c35b989f7e17"
   integrity sha512-uIFtJElxJo29QC753JzhidoAhvp/e/Exezkdhfmt8AymWT6/5B7W1WmponYWkHk2eg6sONyTch0A3nkMPun3SQ==
