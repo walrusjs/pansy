@@ -113,7 +113,7 @@ export class Bundler {
     const entry = getExistFile({
       cwd: this.rootDir,
       files: ['src/index.tsx', 'src/index.ts', 'src/index.jsx', 'src/index.js'],
-      returnRelative: true,
+      returnRelative: true
     });
 
     const result = merge({}, userConfig, config, {

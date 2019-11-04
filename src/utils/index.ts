@@ -25,7 +25,15 @@ export function getDefaultFileName(format: ModuleFormat) {
  * @param files 获取的文件顺序
  * @param returnRelative
  */
-export function getExistFile({ cwd, files, returnRelative }: { cwd: string; files: string[]; returnRelative: boolean }) {
+export function getExistFile({
+  cwd,
+  files,
+  returnRelative
+}: {
+  cwd: string;
+  files: string[];
+  returnRelative: boolean;
+}) {
   for (const file of files) {
     const absFilePath = join(cwd, file);
     if (existsSync(absFilePath)) {
