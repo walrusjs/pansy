@@ -20,6 +20,8 @@ Pansy 在 npm 上可用，如果尚未安装，请先[安装它](./installation.
 
 `pansy`在项目中运行，将`src/index.js`编译为`CommonJS`格式的包：
 
+**注意:** pansy 会按照`src/index.tsx`, `src/index.ts`, `src/index.jsx`, `src/index.js`顺序查找
+
 ```bash
 pansy
 ```
