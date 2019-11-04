@@ -4,7 +4,7 @@
 A zero configuration library bundler.
 </div>
 
-[![Alita](https://img.shields.io/badge/alitajs-walrus-blue.svg)](https://github.com/walrus-plus/walrus)
+[![Alita](https://img.shields.io/badge/alitajs-pansy-blue.svg)](https://github.com/walrus-plus/pansy)
 [![NPM version](https://img.shields.io/npm/v/@pansy/cli.svg?style=flat)](https://npmjs.org/package/@pansy/cli)
 
 > 本项目主要参考[bili](https://github.com/egoist/bili)，做些定制化功能。
@@ -58,3 +58,25 @@ pansy
 ## 📝 文档
 
 https://pansy.now.sh
+
+## ⌨️ 本地开发
+
+```
+# 克隆项目
+$ git clone git@github.com:walrus-plus/pansy.git
+
+# 切换到项目目录
+$ cd pansy
+
+# 安装依赖
+$ yarn bootstrap
+
+# 编译项目
+$ yarn types && yarn build
+```
+
+## 🌟 社区互助
+
+| Github Issue                                          | 钉钉群                                                                                     | 微信群                                                                                   |
+| ----------------------------------------------------- | ------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------- |
+| [issues](https://github.com/walrus-plus/pansy/issues) | <img src="https://github.com/alitajs/alita/blob/master/public/dingding.png" width="100" /> | <img src="https://github.com/alitajs/alita/blob/master/public/wechat.png" width="100" /> |
