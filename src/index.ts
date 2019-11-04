@@ -11,7 +11,7 @@ import progressPlugin from './plugins/progress';
 import nodeResolvePlugin from './plugins/node-resolve';
 import isExternal from './utils/is-external';
 import getBanner from './utils/get-banner';
-import { getDefaultFileName, printAssets, Assets } from './utils';
+import { getDefaultFileName, printAssets, Assets, getExistFile } from './utils';
 import {
   Options,
   Config,
@@ -109,8 +109,15 @@ export class Bundler {
   }
 
   normalizeConfig = (config: Config, userConfig: Config) => {
+    // 默认输入文件
+    const entry = getExistFile({
+      cwd: this.rootDir,
+      files: ['src/index.tsx', 'src/index.ts', 'src/index.jsx', 'src/index.js'],
+      returnRelative: true
+    });
+
     const result = merge({}, userConfig, config, {
-      input: config.input || userConfig.input || 'src/index.js',
+      input: config.input || userConfig.input || entry || 'src/index.js',
       output: merge({}, userConfig.output, config.output),
       plugins: merge({}, userConfig.plugins, config.plugins),
       babel: merge(
@@ -187,7 +194,7 @@ export class Bundler {
         config.plugins.postcss !== false &&
         merge(
           {
-            extract: config.output.extractCSS !== false
+            extract: config.output.extractCSS
           },
           config.plugins.postcss
         ),
@@ -466,6 +473,7 @@ export class Bundler {
     const tasks: Task[] = [];
 
     let { input } = this.config;
+
     if (!Array.isArray(input)) {
       input = [input || 'src/index.js'];
     }
