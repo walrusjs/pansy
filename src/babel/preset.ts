@@ -23,7 +23,8 @@ export default (
         exclude: ['transform-regenerator', 'transform-async-to-generator']
       }
     ],
-    require('@babel/preset-typescript')
+    require('@babel/preset-typescript'),
+    require('@babel/preset-react')
   ].filter(Boolean);
 
   plugins = [
