@@ -173,6 +173,18 @@ export class Bundler {
           config.plugins.progress
         ),
 
+      url: config.plugins.url !== false &&
+        merge(
+          {},
+          config.plugins.url
+        ),
+
+      svgr: config.plugins.svgr !== false &&
+        merge(
+          {},
+          config.plugins.svgr
+        ),
+
       json: config.plugins.json !== false && merge({}, config.plugins.json),
 
       hashbang: config.plugins.hashbang !== false && merge({}, config.plugins.hashbang),
@@ -345,6 +357,8 @@ export class Bundler {
           ? require(`@rollup/plugin-${name}`)
           : isBuiltIn
           ? require(`rollup-plugin-${name}`)
+          : name === 'svgr'
+          ? require('@svgr/rollup')
           : this.localRequire(`rollup-plugin-${name}`);
 
       if (name === 'terser') {
