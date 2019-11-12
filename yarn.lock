@@ -1768,6 +1768,13 @@
     rollup-pluginutils "^2.6.0"
     typescript "^3.4.3"
 
+"@rollup/plugin-json@^4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@rollup/plugin-json/-/plugin-json-4.0.0.tgz#4462e83c7ad5544bef4a601a6e8450daedc4b69b"
+  integrity sha512-Z65CtEVWv40+ri4CvmswyhtuUtki9yP5p0UJN/GyCKKyU4jRuDS9CG0ZuV7/XuS7zGkoajyE7E4XBEaC4GW62A==
+  dependencies:
+    rollup-pluginutils "^2.5.0"
+
 "@rollup/plugin-replace@^2.2.0":
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/@rollup/plugin-replace/-/plugin-replace-2.2.0.tgz#e3b11881fb1ab1be7570e1ccd175b8249e448c52"
@@ -10383,13 +10390,6 @@ rollup-plugin-hashbang@^2.2.2:
   integrity sha512-Yxw9ogeK3KncG1e4CvK0I0IKVBNeJP+DTZS3bExGTfGjw0WP1C7xxbY7LtRd8IKx4fFf53hz7XR1XG7UV6xqCw==
   dependencies:
     magic-string "^0.22.4"
-
-rollup-plugin-json@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/rollup-plugin-json/-/rollup-plugin-json-4.0.0.tgz#a18da0a4b30bf5ca1ee76ddb1422afbb84ae2b9e"
-  integrity sha512-hgb8N7Cgfw5SZAkb3jf0QXii6QX/FOkiIq2M7BAQIEydjHvTyxXHQiIzZaTFgx1GK0cRCHOCBHIyEkkLdWKxow==
-  dependencies:
-    rollup-pluginutils "^2.5.0"
 
 rollup-plugin-node-resolve@^4.2.3:
   version "4.2.4"
