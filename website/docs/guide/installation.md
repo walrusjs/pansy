@@ -11,12 +11,12 @@ node -v
 
 ```bash
 cd your-project
-npm i @pansy/cli --dev
+npm i @walrus/pansy --dev
 ```
 
 也可以使用 yarn 安装
 
 ```bash
 cd your-project
-yarn add @pansy/cli --dev
+yarn add @walrus/pansy --dev
 ```
