@@ -26,13 +26,13 @@ A zero configuration library bundler.
 - npm 安装
 
 ```bash
-npm install @pansy/cli --dev --save
+npm install @walrus/pansy --dev --save
 ```
 
 - yarn 安装
 
 ```bash
-yarn add @pansy/cli --dev
+yarn add @walrus/pansy --dev
 ```
 
 ## 🔨 使用

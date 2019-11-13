@@ -25,7 +25,7 @@ footer: MIT Licensed | Copyright © 2019 Walrus
 cd ./my-project
 
 # 安装
-yarn add --dev @pansy/cli
+yarn add --dev @walrus/pansy
 
 # 创建编译文件
 mkdir src && cd ./src
