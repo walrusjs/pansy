@@ -1,5 +1,5 @@
 {
-  "name": "@pansy/cli",
+  "name": "@walrus/pansy",
   "version": "0.1.6",
   "description": "A zero configuration library bundler.",
   "main": "dist/index.js",
