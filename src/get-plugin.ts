@@ -7,9 +7,17 @@ import nodeResolvePlugin from './plugins/node-resolve';
 import { NormalizedConfig } from './types';
 
 type PluginFactory = (opts: any) => RollupPlugin;
-type GetPlugin = (rootDir: string, name: string, config: NormalizedConfig) => PluginFactory | Promise<PluginFactory>;
+type GetPlugin = (
+  rootDir: string,
+  name: string,
+  config: NormalizedConfig
+) => PluginFactory | Promise<PluginFactory>;
 
-function localRequire(rootDir: string, name: string, { silent, cwd }: { silent?: boolean; cwd?: string } = {}) {
+function localRequire(
+  rootDir: string,
+  name: string,
+  { silent, cwd }: { silent?: boolean; cwd?: string } = {}
+) {
   cwd = cwd || rootDir;
   const resolved = silent ? resolveFrom.silent(cwd, name) : resolveFrom(cwd, name);
   return resolved && require(resolved);
