@@ -2,7 +2,7 @@ import './polyfills';
 import { resolve, relative } from 'path';
 import { chalk as colors, configLoader, lodash } from '@walrus/shared-utils';
 import resolveFrom from 'resolve-from';
-import { rollup, watch, Plugin as RollupPlugin } from 'rollup';
+import { rollup, watch } from 'rollup';
 import waterfall from 'p-waterfall';
 import spinner from './spinner';
 import logger from './logger';

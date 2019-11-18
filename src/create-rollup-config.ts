@@ -263,8 +263,8 @@ export default async function createRollupConfig(
         ? require(`@rollup/plugin-${name}`)
         : isBuiltIn
         ? require(`rollup-plugin-${name}`)
-        : name === '@svgr/rollup'
-        ? require('@svgr/rollup')
+        : name.charAt(0) === '@'
+        ? require(name)
         : localRequire(`rollup-plugin-${name}`);
 
     if (name === 'terser') {
