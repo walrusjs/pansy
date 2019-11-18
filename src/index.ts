@@ -1,5 +1,5 @@
 import './polyfills';
-import path from 'path';
+import { resolve, extname, relative } from 'path';
 import { chalk as colors, configLoader, lodash } from '@walrus/shared-utils';
 import formatTime from 'pretty-ms';
 import resolveFrom from 'resolve-from';
@@ -67,7 +67,7 @@ export class Bundler {
   constructor(config: Config, public options: Options = {}) {
     logger.setOptions({ logLevel: options.logLevel });
 
-    this.rootDir = path.resolve(options.rootDir || '.');
+    this.rootDir = resolve(options.rootDir || '.');
 
     this.pkg = configLoader.loadSync({
       files: ['package.json'],
@@ -133,7 +133,7 @@ export class Bundler {
       ]
     });
 
-    result.output.dir = path.resolve(result.output.dir || 'dist');
+    result.output.dir = resolve(result.output.dir || 'dist');
 
     return result;
   };
@@ -395,16 +395,15 @@ export class Bundler {
       name: 'record-bundle',
       generateBundle(outputOptions, _assets) {
         const EXTS = [
-          outputOptions.entryFileNames ? path.extname(outputOptions.entryFileNames) : '.js',
+          outputOptions.entryFileNames ? extname(outputOptions.entryFileNames) : '.js',
           '.css'
         ];
         for (const fileName of Object.keys(_assets)) {
           if (EXTS.some((ext) => fileName.endsWith(ext))) {
             const file: any = _assets[fileName];
-            const absolute = outputOptions.dir && path.resolve(outputOptions.dir, fileName);
+            const absolute = outputOptions.dir && resolve(outputOptions.dir, fileName);
             if (absolute) {
-              const relative = path.relative(process.cwd(), absolute);
-              assets.set(relative, {
+              assets.set(relative(process.cwd(), absolute), {
                 absolute,
                 get source() {
                   return file.isAsset ? file.source.toString() : file.code;
@@ -470,7 +469,7 @@ export class Bundler {
       outputConfig: {
         globals: config.globals,
         format: rollupFormat,
-        dir: path.resolve(config.output.dir || 'dist'),
+        dir: resolve(config.output.dir || 'dist'),
         entryFileNames: fileName,
         name: config.output.moduleName,
         banner,
@@ -504,10 +503,10 @@ export class Bundler {
 
     const normalizeInputValue = (input: string[] | ConfigEntryObject) => {
       if (Array.isArray(input)) {
-        return input.map((v) => `./${path.relative(this.rootDir, this.resolveRootDir(v))}`);
+        return input.map((v) => `./${relative(this.rootDir, this.resolveRootDir(v))}`);
       }
       return Object.keys(input).reduce((res: ConfigEntryObject, entryName: string) => {
-        res[entryName] = `./${path.relative(this.rootDir, this.resolveRootDir(input[entryName]))}`;
+        res[entryName] = `./${relative(this.rootDir, this.resolveRootDir(input[entryName]))}`;
         return res;
       }, {});
     };
@@ -645,7 +644,7 @@ export class Bundler {
   };
 
   resolveRootDir = (...args: string[]) => {
-    return path.resolve(this.rootDir, ...args);
+    return resolve(this.rootDir, ...args);
   };
 
   localRequire(name: string, { silent, cwd }: { silent?: boolean; cwd?: string } = {}) {
