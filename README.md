@@ -1,11 +1,11 @@
-<h1 align="center">pansy</h1>
+<h1 align="center">@walrus/pansy</h1>
 
 <div align="center">
 A zero configuration library bundler.
 </div>
 
-[![Alita](https://img.shields.io/badge/alitajs-pansy-blue.svg)](https://github.com/walrus-plus/pansy)
-[![NPM version](https://img.shields.io/npm/v/@pansy/cli.svg?style=flat)](https://npmjs.org/package/@pansy/cli)
+[![Alita](https://img.shields.io/badge/alitajs-pansy-blue.svg)](https://github.com/walrusjs/pansy)
+[![NPM version](https://img.shields.io/npm/v/@walrus/pansy.svg?style=flat)](https://npmjs.org/package/@walrus/pansy.svg)
 
 > 本项目主要参考[bili](https://github.com/egoist/bili)，做些定制化功能。
 
@@ -79,4 +79,4 @@ $ yarn types && yarn build
 
 | Github Issue                                          | 钉钉群                                                                                     | 微信群                                                                                   |
 | ----------------------------------------------------- | ------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------- |
-| [issues](https://github.com/walrus-plus/pansy/issues) | <img src="https://github.com/alitajs/alita/blob/master/public/dingding.png" width="100" /> | <img src="https://github.com/alitajs/alita/blob/master/public/wechat.png" width="100" /> |
+| [issues](https://github.com/walrusjs/pansy/issues) | <img src="https://github.com/alitajs/alita/blob/master/public/dingding.png" width="100" /> | <img src="https://github.com/alitajs/alita/blob/master/public/wechat.png" width="100" /> |

@@ -60,7 +60,7 @@
     "rollup-plugin-url": "^3.0.0"
   },
   "devDependencies": {
-    "@types/node": "^12.12.3",
+    "@types/node": "^12.12.8",
     "@types/pify": "^3.0.2",
     "@types/resolve": "^0.0.8",
     "@walrus/cli": "^0.2.3",
