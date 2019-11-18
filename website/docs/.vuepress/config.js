@@ -37,6 +37,11 @@ module.exports = (ctx) => ({
             'environment-variables',
             'update-package'
           ]
+        },
+        {
+          title: '参考',
+          collapsable: false,
+          children: ['FAQ']
         }
       ]
     }
