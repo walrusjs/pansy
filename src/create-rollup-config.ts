@@ -1,14 +1,12 @@
-import { ModuleFormat, Plugin as RollupPlugin } from 'rollup';
+import { ModuleFormat } from 'rollup';
 import { resolve, extname, relative } from 'path';
-import resolveFrom from 'resolve-from';
 import formatTime from 'pretty-ms';
 import { lodash, chalk as colors } from '@walrus/shared-utils';
 import isExternal from './utils/is-external';
 import getBanner from './utils/get-banner';
-import progressPlugin from './plugins/progress';
 import logger from './logger';
-import nodeResolvePlugin from './plugins/node-resolve';
 import { getDefaultFileName, printAssets, Assets } from './utils';
+import getPlugin from './get-plugin';
 import {
   NormalizedConfig,
   Format,
@@ -32,20 +30,10 @@ interface RollupConfigInput {
   config: NormalizedConfig;
 }
 
-type PluginFactory = (opts: any) => RollupPlugin;
-type GetPlugin = (name: string) => PluginFactory | Promise<PluginFactory>;
-
-let rootDir: string = '';
-
 const merge = lodash.merge;
-function localRequire(name: string, { silent, cwd }: { silent?: boolean; cwd?: string } = {}) {
-  cwd = cwd || rootDir;
-  const resolved = silent ? resolveFrom.silent(cwd, name) : resolveFrom(cwd, name);
-  return resolved && require(resolved);
-}
 
 export default async function createRollupConfig(
-  dir: string,
+  rootDir: string,
   pkg: {
     path?: string;
     data?: any;
@@ -53,7 +41,6 @@ export default async function createRollupConfig(
   opts: RollupConfigInput
 ): Promise<RollupConfig> {
   const { source, format, title, context, assets, config } = opts;
-  rootDir = dir;
   // 检查config.minify是否为真，否则按format进行推断
   const minify =
     config.output.minify === undefined ? format.endsWith('-min') : config.output.minify;
@@ -241,45 +228,12 @@ export default async function createRollupConfig(
     }
   }
 
-  const getPlugin: GetPlugin = (name: string) => {
-    if (config.resolvePlugins && config.resolvePlugins[name]) {
-      return config.resolvePlugins[name];
-    }
-
-    // 是否是@rollup/plugin-*形式的内置包
-    const isOfficialBuiltIn = require('../package').dependencies[`@rollup/plugin-${name}`];
-
-    // 是否是rollup-plugin-*形式的内置包
-    const isBuiltIn = require('../package').dependencies[`rollup-plugin-${name}`];
-
-    const plugin =
-      name === 'babel'
-        ? import('./plugins/babel').then((res) => res.default)
-        : name === 'node-resolve'
-        ? nodeResolvePlugin
-        : name === 'progress'
-        ? progressPlugin
-        : isOfficialBuiltIn
-        ? require(`@rollup/plugin-${name}`)
-        : isBuiltIn
-        ? require(`rollup-plugin-${name}`)
-        : name.charAt(0) === '@'
-        ? require(name)
-        : localRequire(`rollup-plugin-${name}`);
-
-    if (name === 'terser') {
-      return plugin.terser;
-    }
-
-    return plugin.default || plugin;
-  };
-
   const plugins = await Promise.all(
     Object.keys(pluginsOptions)
       .filter((name) => pluginsOptions[name])
       .map(async (name) => {
         const options = pluginsOptions[name] === true ? {} : pluginsOptions[name];
-        const plugin = await getPlugin(name);
+        const plugin = await getPlugin(rootDir, name, config);
         return plugin(options);
       })
   );
