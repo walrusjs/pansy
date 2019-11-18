@@ -1,4 +1,4 @@
-import { ModuleFormat, Plugin as RollupPlugin, } from 'rollup';
+import { ModuleFormat, Plugin as RollupPlugin } from 'rollup';
 import { resolve, extname, relative } from 'path';
 import resolveFrom from 'resolve-from';
 import formatTime from 'pretty-ms';
@@ -38,10 +38,7 @@ type GetPlugin = (name: string) => PluginFactory | Promise<PluginFactory>;
 let rootDir: string = '';
 
 const merge = lodash.merge;
-function localRequire(
-  name: string,
-  { silent, cwd }: { silent?: boolean; cwd?: string } = {}
-) {
+function localRequire(name: string, { silent, cwd }: { silent?: boolean; cwd?: string } = {}) {
   cwd = cwd || rootDir;
   const resolved = silent ? resolveFrom.silent(cwd, name) : resolveFrom(cwd, name);
   return resolved && require(resolved);
@@ -58,7 +55,8 @@ export default async function createRollupConfig(
   const { source, format, title, context, assets, config } = opts;
   rootDir = dir;
   // 检查config.minify是否为真，否则按format进行推断
-  const minify = config.output.minify === undefined ? format.endsWith('-min') : config.output.minify;
+  const minify =
+    config.output.minify === undefined ? format.endsWith('-min') : config.output.minify;
 
   let minPlaceholder = '';
   let rollupFormat: ModuleFormat;
@@ -71,7 +69,8 @@ export default async function createRollupConfig(
   }
 
   // UMD格式应始终捆绑node_modules
-  const bundleNodeModules = rollupFormat === 'umd' || rollupFormat === 'iife' || config.bundleNodeModules;
+  const bundleNodeModules =
+    rollupFormat === 'umd' || rollupFormat === 'iife' || config.bundleNodeModules;
 
   const resolveRootDir = (...args: string[]) => {
     return resolve(rootDir, ...args);
@@ -79,34 +78,35 @@ export default async function createRollupConfig(
 
   const pluginsOptions: { [key: string]: any } = {
     progress:
-        config.plugins.progress !== false &&
-        merge(
-          {
-            title
-          },
-          config.plugins.progress
-        ),
+      config.plugins.progress !== false &&
+      merge(
+        {
+          title
+        },
+        config.plugins.progress
+      ),
 
     url: config.plugins.url !== false && merge({}, config.plugins.url),
 
-    '@svgr/rollup': config.plugins[`'@svgr/rollup'`] !== false && merge({}, config.plugins[`@svgr/rollup`]),
+    '@svgr/rollup':
+      config.plugins[`'@svgr/rollup'`] !== false && merge({}, config.plugins[`@svgr/rollup`]),
 
     json: config.plugins.json !== false && merge({}, config.plugins.json),
 
     hashbang: config.plugins.hashbang !== false && merge({}, config.plugins.hashbang),
 
     'node-resolve':
-        config.plugins['node-resolve'] !== false &&
-        merge(
-          {},
-          {
-            rootDir,
-            bundleNodeModules,
-            externals: config.externals,
-            browser: config.output.target === 'browser'
-          },
-          config.plugins['node-resolve']
-        ),
+      config.plugins['node-resolve'] !== false &&
+      merge(
+        {},
+        {
+          rootDir,
+          bundleNodeModules,
+          externals: config.externals,
+          browser: config.output.target === 'browser'
+        },
+        config.plugins['node-resolve']
+      ),
 
     postcss:
       config.plugins.postcss !== false &&
@@ -381,5 +381,5 @@ export default async function createRollupConfig(
       sourcemap: typeof config.output.sourceMap === 'boolean' ? config.output.sourceMap : minify,
       sourcemapExcludeSources: config.output.sourceMapExcludeSources
     }
-  }
+  };
 }

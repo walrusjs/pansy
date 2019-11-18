@@ -4,7 +4,7 @@ export const DEFAULT_CONFIG_FILE = [
   'pansy.config.ts',
   '.pansyrc.js',
   '.pansyrc.ts'
-]
+];
 
 export const DEFAULT_INPUT_FILE = [
   'src/index.tsx',

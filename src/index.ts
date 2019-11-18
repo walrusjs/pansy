@@ -64,9 +64,7 @@ export class Bundler {
         ? {}
         : configLoader.loadSync({
             files:
-              typeof options.configFile === 'string'
-                ? [options.configFile]
-                : DEFAULT_CONFIG_FILE,
+              typeof options.configFile === 'string' ? [options.configFile] : DEFAULT_CONFIG_FILE,
             cwd: this.rootDir,
             packageKey: 'pansy'
           });
@@ -188,7 +186,7 @@ export class Bundler {
                   format
                 })
               : this.config;
-            const rollupConfig = await createRollupConfig(this.rootDir, this.pkg,{
+            const rollupConfig = await createRollupConfig(this.rootDir, this.pkg, {
               source,
               format,
               title: task.title,
