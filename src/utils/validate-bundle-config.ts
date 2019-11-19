@@ -22,8 +22,8 @@ export default function(config: NormalizedConfig, rootDir: string) {
     }
 
     // umd格式必须制定output.name
-    if (output.format.indexOf('umd') !== -1) {
-      throw new Error(`${chalk.cyan('umd')} format must be set ${chalk.cyan('output.name')}`);
+    if (output.format.indexOf('umd') !== -1 && !output.moduleName) {
+      throw new Error(`${chalk.cyan('umd')} format must be set ${chalk.cyan('output.moduleName')}`);
     }
   }
 
