@@ -1,7 +1,9 @@
 import './polyfills';
 import { resolve, relative } from 'path';
+import { join } from 'path';
 import { chalk as colors, configLoader, lodash } from '@walrus/shared-utils';
 import resolveFrom from 'resolve-from';
+import rimraf from 'rimraf';
 import { rollup, watch } from 'rollup';
 import waterfall from 'p-waterfall';
 import spinner from './spinner';
@@ -114,7 +116,13 @@ export class Bundler {
     };
     const tasks: Task[] = [];
 
-    let { input } = this.config;
+    let { input, clearOutput, output } = this.config;
+
+    // 构建之前删除输出目录
+    if (clearOutput) {
+      logger.log(colors.gray(`Clean dist directory`));
+      rimraf.sync(join(this.rootDir, output.dir || 'dist'));
+    }
 
     if (!Array.isArray(input)) {
       input = [input || 'src/index.js'];

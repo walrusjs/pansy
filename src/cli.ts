@@ -20,6 +20,7 @@ cli
   .option('--format <format>', 'Output format (cjs | umd | es  | iife), can be used multiple times')
   .option('--input.* [file]', 'An object mapping names to entry points')
   .option('-d, --out-dir <outDir>', 'Output directory', { default: 'dist' })
+  .option('--clear-output', 'Clear output directory', { default: true })
   .option('--root-dir <rootDir>', 'The root directory to resolve files from')
   .option('--file-name <name>', 'Set the file name for output files')
   .option('--module-name <name>', 'Set the module name for umd bundle')
@@ -64,6 +65,7 @@ cli
           sourceMapExcludeSources: options.mapExcludeSources,
           target: options.target
         },
+        clearOutput: options.clearOutput || true,
         bundleNodeModules: options.bundleNodeModules,
         env: options.env,
         plugins: options.plugins,

@@ -164,12 +164,16 @@ export interface ConfigOutput {
 
 export interface Config {
   /**
-   * Input files
+   * 入口文件
    * @default `src/index.js`
    * @cli `pansy [...input]`
    */
   input?: string | ConfigEntryObject | Array<ConfigEntryObject | string>;
   output?: ConfigOutput;
+  /**
+   * 是否在构建之前，删除输出目录。默认开启
+   */
+  clearOutput?: boolean;
   /**
    * Define env variables that are only available in your library code. i.e. if you have some code like this in your library.
    *
@@ -191,7 +195,7 @@ export interface Config {
    */
   env?: Env;
   /**
-   * Use Rollup plugins
+   * 配置Rollup插件
    *
    * ```js
    * // pansy.config.js
@@ -293,6 +297,7 @@ interface ConfigOutputOverwrite {
 export interface NormalizedConfig {
   input?: string | ConfigEntryObject | Array<ConfigEntryObject | string>;
   output: Overwrite<ConfigOutput, ConfigOutputOverwrite>;
+  clearOutput?: boolean;
   env?: Env;
   bundleNodeModules?: boolean | string[];
   plugins: {
