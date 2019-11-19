@@ -38,10 +38,10 @@ export default function(config: NormalizedConfig, rootDir: string) {
       inputs = [input];
     }
     if (isObject(input)) {
-      Object.keys(input).forEach(key => {
+      Object.keys(input).forEach((key) => {
         // @ts-ignore
         inputs.push(input[key]);
-      })
+      });
     }
     if (isArray(config.input)) {
       inputs = config.input as string[];
