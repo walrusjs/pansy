@@ -75,6 +75,8 @@ export default async function createRollupConfig(
 
     url: config.plugins.url !== false && merge({}, config.plugins.url),
 
+    copy: config.plugins.copy !== false && merge({}, config.plugins.copy),
+
     '@svgr/rollup':
       config.plugins[`'@svgr/rollup'`] !== false && merge({}, config.plugins[`@svgr/rollup`]),
 
