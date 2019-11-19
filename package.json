@@ -15,7 +15,7 @@
   "scripts": {
     "bootstrap": "yarn || npm i",
     "types": "tsc --build tsconfig.types.json",
-    "build": "rm -rf dist && node lib/cli",
+    "build": "node lib/cli",
     "test": "yarn test:unit",
     "test:cov": "yarn test:unit --coverage",
     "test:unit": "cd test/fixtures && yarn && cd ../../ && walrus test",
