@@ -1,6 +1,6 @@
 {
   "name": "@walrus/pansy",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "A zero configuration library bundler.",
   "main": "dist/index.js",
   "bin": {
