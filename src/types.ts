@@ -175,6 +175,10 @@ export interface Config {
    */
   clearOutput?: boolean;
   /**
+   * 是否禁用类型检查
+   */
+  disableTypeCheck?: boolean;
+  /**
    * Define env variables that are only available in your library code. i.e. if you have some code like this in your library.
    *
    * ```js
@@ -298,6 +302,7 @@ export interface NormalizedConfig {
   input?: string | ConfigEntryObject | Array<ConfigEntryObject | string>;
   output: Overwrite<ConfigOutput, ConfigOutputOverwrite>;
   clearOutput?: boolean;
+  disableTypeCheck?: boolean;
   env?: Env;
   bundleNodeModules?: boolean | string[];
   plugins: {

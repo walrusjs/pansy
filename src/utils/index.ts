@@ -61,3 +61,7 @@ export async function printAssets(assets: Assets, title: string) {
     )
   );
 }
+
+export function isTypescriptFile(filePath: string): boolean {
+  return filePath.endsWith('.ts') || filePath.endsWith('.tsx');
+}

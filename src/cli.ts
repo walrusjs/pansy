@@ -21,6 +21,7 @@ cli
   .option('--input.* [file]', 'An object mapping names to entry points')
   .option('-d, --out-dir <outDir>', 'Output directory', { default: 'dist' })
   .option('--clear-output', 'Clear output directory', { default: true })
+  .option('--disable-type-check', 'disable type check', { default: false })
   .option('--root-dir <rootDir>', 'The root directory to resolve files from')
   .option('--file-name <name>', 'Set the file name for output files')
   .option('--module-name <name>', 'Set the module name for umd bundle')
@@ -66,6 +67,7 @@ cli
           target: options.target
         },
         clearOutput: options.clearOutput || true,
+        disableTypeCheck: options.disableTypeCheck,
         bundleNodeModules: options.bundleNodeModules,
         env: options.env,
         plugins: options.plugins,

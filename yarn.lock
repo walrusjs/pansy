@@ -1752,6 +1752,21 @@
   dependencies:
     "@types/node" "^12.11.1"
 
+"@pansy/is-array@^0.1.3":
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/@pansy/is-array/-/is-array-0.1.3.tgz#ecd7a3cbca66971f10856694dd12fab0138e9f02"
+  integrity sha512-9xI1EY1CuOdZilrepMc3fXDLH6V9Gz+Mq6oIaR4lwUV9mKHo7mjtQxrr1pvLWf/6vQbSQezoY+fKnuM12sAPIw==
+
+"@pansy/is-object@^0.1.3":
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/@pansy/is-object/-/is-object-0.1.3.tgz#47157a21b3b5d368a9f642efb85db3b7d0867373"
+  integrity sha512-YH7iTKf7BXJpdFQA4njbUKQv5aQ6gH8fL9TH8V4fZXjvnJcLS1EPfYMSIwxvWw7ygyo5zI0bULBz9eOJBvjXdA==
+
+"@pansy/is-string@^0.1.3":
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/@pansy/is-string/-/is-string-0.1.3.tgz#41f13283298ffbb199f51da78bd462ed8366cc15"
+  integrity sha512-sx2qU5+6hm3Ka47V/6sNHEHw16m/gmpgED5Son9BJmY9EHNlq3i8Vx78EU5hEXLB1tHmsfTGfH2e1xQvThybUg==
+
 "@rollup/plugin-alias@^2.2.0":
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/@rollup/plugin-alias/-/plugin-alias-2.2.0.tgz#3ac52ece8b39583249884adb90fb316484389fe5"

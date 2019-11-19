@@ -1,5 +1,5 @@
 import { ModuleFormat } from 'rollup';
-import { resolve, extname, relative } from 'path';
+import { resolve, extname, relative, join } from 'path';
 import formatTime from 'pretty-ms';
 import { lodash, chalk as colors } from '@walrus/shared-utils';
 import isExternal from './utils/is-external';
@@ -118,11 +118,19 @@ export default async function createRollupConfig(
       merge(
         {
           objectHashIgnoreUnknownHack: true,
+          clean: true,
+          tsconfig: join(rootDir, 'tsconfig.json'),
+          tsconfigDefaults: {
+            compilerOptions: {
+              declaration: true
+            }
+          },
           tsconfigOverride: {
             compilerOptions: {
               module: 'esnext'
             }
-          }
+          },
+          check: !config.disableTypeCheck
         },
         config.plugins.typescript2
       ),

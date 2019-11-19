@@ -80,7 +80,7 @@ export class Bundler {
     this.config = this.normalizeConfig(config, userConfig.data || {}) as NormalizedConfig;
 
     // 检验配置是否正确
-    validateBundleConfig(this.config);
+    validateBundleConfig(this.config, this.rootDir);
 
     this.bundles = new Set();
   }
