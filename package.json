@@ -1,6 +1,6 @@
 {
   "name": "@walrus/pansy",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "A zero configuration library bundler.",
   "main": "dist/index.js",
   "bin": {
@@ -24,7 +24,7 @@
     "prettier": "walrus prettier",
     "docs:start": "cd ./website && yarn start",
     "docs:build": "cd ./website && yarn build",
-    "prepublishOnly": "yarn types && yarn build"
+    "prepublishOnly": "yarn types && yarn build && rm -rf dist/src dist/test"
   },
   "repository": "git@github.com:walrus-plus/pansy.git",
   "author": "Walrus Team",
