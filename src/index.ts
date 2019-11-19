@@ -1,6 +1,7 @@
 import './polyfills';
 import { resolve, relative } from 'path';
 import { join } from 'path';
+import signale from 'signale';
 import { chalk as colors, configLoader, lodash } from '@walrus/shared-utils';
 import resolveFrom from 'resolve-from';
 import rimraf from 'rimraf';
@@ -20,6 +21,7 @@ import {
   Task
 } from './types';
 import createRollupConfig from './create-rollup-config';
+import validateBundleConfig from './utils/validate-bundle-config';
 import { DEFAULT_CONFIG_FILE, DEFAULT_INPUT_FILE } from './config';
 
 // Make rollup-plugin-vue use basename in component.__file instead of absolute path
@@ -77,6 +79,9 @@ export class Bundler {
 
     this.config = this.normalizeConfig(config, userConfig.data || {}) as NormalizedConfig;
 
+    // 检验配置是否正确
+    validateBundleConfig(this.config);
+
     this.bundles = new Set();
   }
 
@@ -120,7 +125,7 @@ export class Bundler {
 
     // 构建之前删除输出目录
     if (clearOutput) {
-      logger.log(colors.gray(`Clean dist directory`));
+      signale.note(colors.gray(`Clean output directory`));
       rimraf.sync(join(this.rootDir, output.dir || 'dist'));
     }
 

@@ -1,8 +1,6 @@
 import { Plugin as RollupPlugin } from 'rollup';
 import resolveFrom from 'resolve-from';
-import formatTime from 'pretty-ms';
 import progressPlugin from './plugins/progress';
-import logger from './logger';
 import nodeResolvePlugin from './plugins/node-resolve';
 import { NormalizedConfig } from './types';
 
