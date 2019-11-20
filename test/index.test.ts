@@ -25,7 +25,8 @@ snapshot(
   },
   {
     output: {
-      format: ['umd', 'umd-min', 'cjs']
+      format: ['umd', 'umd-min', 'cjs'],
+      moduleName: 'test'
     },
     extendConfig(config, { format }) {
       if (format === 'umd') {
