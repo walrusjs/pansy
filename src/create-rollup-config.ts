@@ -64,6 +64,20 @@ export default async function createRollupConfig(
   };
 
   const pluginsOptions: { [key: string]: any } = {
+    url: config.plugins.url !== false && merge({}, config.plugins.url),
+
+    '@svgr/rollup': config.plugins[`'@svgr/rollup'`] !== false &&
+      merge({}, config.plugins[`@svgr/rollup`]),
+
+    postcss:
+      config.plugins.postcss !== false &&
+      merge(
+        {
+          extract: config.output.extractCSS
+        },
+        config.plugins.postcss
+      ),
+
     progress:
       config.plugins.progress !== false &&
       merge(
@@ -72,15 +86,6 @@ export default async function createRollupConfig(
         },
         config.plugins.progress
       ),
-
-    url: config.plugins.url !== false && merge({}, config.plugins.url),
-
-    copy: config.plugins.copy !== false && merge({}, config.plugins.copy),
-
-    '@svgr/rollup':
-      config.plugins[`'@svgr/rollup'`] !== false && merge({}, config.plugins[`@svgr/rollup`]),
-
-    json: config.plugins.json !== false && merge({}, config.plugins.json),
 
     hashbang: config.plugins.hashbang !== false && merge({}, config.plugins.hashbang),
 
@@ -97,11 +102,13 @@ export default async function createRollupConfig(
         config.plugins['node-resolve']
       ),
 
-    postcss:
-      config.plugins.postcss !== false &&
+    alias:
+      config.plugins.alias !== false &&
       merge(
         {
-          extract: config.output.extractCSS
+          entries: {
+            '@': resolveRootDir('src')
+          }
         },
         config.plugins.postcss
       ),
@@ -150,6 +157,10 @@ export default async function createRollupConfig(
         config.plugins.babel
       ),
 
+    copy: config.plugins.copy !== false && merge({}, config.plugins.copy),
+
+    json: config.plugins.json !== false && merge({}, config.plugins.json),
+
     buble:
       (config.plugins.buble || config.babel.minimal) &&
       merge(
@@ -173,17 +184,6 @@ export default async function createRollupConfig(
           functions: ['console.log']
         },
         config.plugins.strip
-      ),
-
-    alias:
-      config.plugins.alias !== false &&
-      merge(
-        {
-          entries: {
-            '@': resolveRootDir('src')
-          }
-        },
-        config.plugins.postcss
       ),
 
     commonjs:
