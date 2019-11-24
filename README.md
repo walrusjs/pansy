@@ -6,6 +6,7 @@ A zero configuration library bundler.
 
 [![Alita](https://img.shields.io/badge/alitajs-pansy-blue.svg)](https://github.com/walrusjs/pansy)
 [![NPM version](https://img.shields.io/npm/v/@walrus/pansy.svg?style=flat)](https://npmjs.org/package/@walrus/pansy.svg)
+[![NPM downloads](https://img.shields.io/npm/dm/@walrus/pansy.svg?style=flat)](https://npmjs.org/package/@walrus/pansy.svg)
 
 > 本项目主要参考[bili](https://github.com/egoist/bili)，做些定制化功能。
 
