@@ -1,8 +1,8 @@
 <h1 align="center">@walrus/pansy</h1>
 
-<div align="center">
+<h2 align="center">
 A zero configuration library bundler.
-</div>
+</h2>
 
 [![Alita](https://img.shields.io/badge/alitajs-pansy-blue.svg)](https://github.com/walrusjs/pansy)
 [![NPM version](https://img.shields.io/npm/v/@walrus/pansy.svg?style=flat)](https://npmjs.org/package/@walrus/pansy.svg)
