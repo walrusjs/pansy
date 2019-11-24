@@ -5,6 +5,6 @@ const config: Config = {
     format: ['cjs', 'es', 'umd', 'umd-min'],
     moduleName: 'moduleName'
   }
-}
+};
 
 export default config;
