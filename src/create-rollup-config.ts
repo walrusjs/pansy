@@ -1,7 +1,7 @@
 import { ModuleFormat } from 'rollup';
 import { resolve, extname, relative, join } from 'path';
 import formatTime from 'pretty-ms';
-import { lodash, chalk as colors } from '@walrus/shared-utils';
+import { _, chalk as colors } from '@walrus/shared-utils';
 import isExternal from './utils/is-external';
 import getBanner from './utils/get-banner';
 import logger from './logger';
@@ -30,7 +30,7 @@ interface RollupConfigInput {
   config: NormalizedConfig;
 }
 
-const merge = lodash.merge;
+const merge = _.merge;
 
 export default async function createRollupConfig(
   rootDir: string,
@@ -66,8 +66,8 @@ export default async function createRollupConfig(
   const pluginsOptions: { [key: string]: any } = {
     url: config.plugins.url !== false && merge({}, config.plugins.url),
 
-    '@svgr/rollup': config.plugins[`'@svgr/rollup'`] !== false &&
-      merge({}, config.plugins[`@svgr/rollup`]),
+    '@svgr/rollup':
+      config.plugins[`'@svgr/rollup'`] !== false && merge({}, config.plugins[`@svgr/rollup`]),
 
     postcss:
       config.plugins.postcss !== false &&
