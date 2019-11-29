@@ -46,6 +46,7 @@
     "@rollup/plugin-url": "^4.0.0",
     "@svgr/rollup": "^4.3.3",
     "@walrus/shared-utils": "^0.4.1",
+    "autoprefixer": "^9.7.2",
     "babel-plugin-alter-object-assign": "^1.0.2",
     "babel-plugin-transform-async-to-promises": "^0.8.15",
     "less": "^3.10.3",
