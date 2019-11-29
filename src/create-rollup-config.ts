@@ -1,6 +1,7 @@
 import { ModuleFormat } from 'rollup';
 import { resolve, extname, relative, join } from 'path';
 import formatTime from 'pretty-ms';
+import autoPrefixer from 'autoprefixer';
 import { _, chalk as colors } from '@walrus/shared-utils';
 import isExternal from './utils/is-external';
 import getBanner from './utils/get-banner';
@@ -75,7 +76,8 @@ export default async function createRollupConfig(
         {
           extract: config.output.extractCSS !== false,
           inject: true,
-          extensions: ['.css', '.pcss', 'less', 'scss']
+          extensions: ['.css', '.pcss', 'less', 'scss'],
+          plugins: [autoPrefixer()]
         },
         config.plugins.postcss
       ),

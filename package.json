@@ -63,6 +63,7 @@
     "rollup-plugin-typescript2": "^0.25.2"
   },
   "devDependencies": {
+    "@types/autoprefixer": "^9.6.1",
     "@types/node": "^12.12.8",
     "@types/pify": "^3.0.2",
     "@types/resolve": "^0.0.8",
