@@ -75,7 +75,6 @@ export default async function createRollupConfig(
       merge(
         {
           extract: config.output.extractCSS !== false,
-          inject: true,
           extensions: ['.css', '.pcss', 'less', 'scss'],
           plugins: [autoPrefixer()]
         },
