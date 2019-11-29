@@ -8,6 +8,10 @@
     "build": "rm -rf dist && node ../../lib/cli"
   },
   "dependencies": {
+    "rollup-plugin-vue": "5.1.1",
     "vue": "^2.6.10"
+  },
+  "devDependencies": {
+    "vue-template-compiler": "^2.6.10"
   }
 }

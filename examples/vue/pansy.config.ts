@@ -3,7 +3,8 @@ const config = {
     index: 'src/index.vue'
   },
   output: {
-    format: 'esm'
+    format: ['cjs', 'es', 'umd', 'umd-min'],
+    moduleName: 'moduleName'
   }
 };
 
