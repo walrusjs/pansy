@@ -3,7 +3,12 @@ import './index.less';
 import Button from './Button';
 
 const App: FC = () => {
-  return <div>Hello World<Button /> </div>;
+  return (
+    <div>
+      Hello World
+      <Button />{' '}
+    </div>
+  );
 };
 
 export default App;

@@ -1,8 +1,7 @@
 import './polyfills';
 import { resolve, relative } from 'path';
 import { join } from 'path';
-import signale from 'signale';
-import { chalk as colors, configLoader, lodash } from '@walrus/shared-utils';
+import { chalk as colors, configLoader, _ } from '@walrus/shared-utils';
 import resolveFrom from 'resolve-from';
 import rimraf from 'rimraf';
 import { rollup, watch } from 'rollup';
@@ -20,12 +19,12 @@ import {
   RunContext,
   Task
 } from './types';
+import custom from './custom';
 import createRollupConfig from './create-rollup-config';
 import validateBundleConfig from './utils/validate-bundle-config';
 import { DEFAULT_CONFIG_FILE, DEFAULT_INPUT_FILE } from './config';
 
 // Make rollup-plugin-vue use basename in component.__file instead of absolute path
-// TODO: PR to rollup-plugin-vue to allow this as an API option
 process.env.BUILD = 'production';
 
 interface RunOptions {
@@ -34,7 +33,7 @@ interface RunOptions {
   concurrent?: boolean;
 }
 
-const merge = lodash.merge;
+const merge = _.merge;
 
 export class Bundler {
   rootDir: string;
@@ -125,7 +124,7 @@ export class Bundler {
 
     // 构建之前删除输出目录
     if (clearOutput) {
-      signale.note(colors.gray(`Clean output directory`));
+      custom.info(colors.gray(`Clean output directory`));
       rimraf.sync(join(this.rootDir, output.dir || 'dist'));
     }
 

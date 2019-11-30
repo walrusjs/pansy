@@ -141,7 +141,7 @@ export interface ConfigOutput {
    */
   minify?: boolean;
   /**
-   * Extract CSS into a single file.
+   * 将CSS提取到单个文件中
    * @default `true`
    */
   extractCSS?: boolean;

@@ -12,8 +12,8 @@ export default {
 };
 </script>
 
-<style>
-.example {
-  color: red;
+<style scoped>
+.test {
+  color: #000;
 }
 </style>

@@ -1,20 +1,16 @@
 import React from 'react';
 
 interface ButtonProps {
-  text?: string
+  text?: string;
 }
 
 class Button extends React.Component<ButtonProps> {
   static defaultProps = {
     text: 'hello world'
-  }
+  };
   render() {
     const { text } = this.props;
-    return (
-      <button>
-        {text}
-      </button>
-    )
+    return <button>{text}</button>;
   }
 }
 
