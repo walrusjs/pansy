@@ -11,12 +11,12 @@ sidebar: auto
 
 ```
 {
-  asyncToPromises: undefined | false | true;
-  babelrc: undefined | false | true;
-  configFile: undefined | false | true;
-  jsx: undefined | string;
-  minimal: undefined | false | true;
-  objectAssign: undefined | string
+  asyncToPromises?: boolean;
+  babelrc?: boolean;
+  configFile?: boolean;
+  jsx?: string;
+  minimal?: boolean;
+  objectAssign?: string
 }
 
 ```
@@ -33,11 +33,11 @@ sidebar: auto
 
 ### babel.asyncToPromises
 
-转换`async/await`为`Promise`
+是否转换`async/await`为`Promise`，默认开启
 
 ### babel.babelrc
 
-禁用.babelrc，默认情况下，Pansy 会读取它
+禁用.babelrc，默认情况下 Pansy 会读取它
 
 ### babel.configFile
 
@@ -45,7 +45,7 @@ sidebar: auto
 
 ### babel.jsx
 
-自定义 JSX 编译指示。 如果要使用`Preact`，请将其设置为`h`。
+自定义 JSX 编译。 如果要使用`Preact`，请将其设置为`h`。
 
 ### babel.minimal
 
@@ -64,7 +64,9 @@ string | { author: any; license: string: name: string; version: string } | boole
 
 ```
 
-在输出包的顶部插入版权消息。设置为`ture`，pansy 会自动读取`package.json`中的数据
+在输出包的顶部插入版权消息。
+
+**注意：** 设置为`ture`，pansy 会自动读取`package.json`中的数据
 
 ## bundleNodeModules
 
@@ -77,7 +79,7 @@ string | { author: any; license: string: name: string; version: string } | boole
 
 - cli `--bundle-node-modules`
 
-在打包文件中包含 node module。请注意，对于 UMD 格式包始终包含。
+在打包文件中包含 node module。请注意，对于 UMD 格式包始终有效。
 
 ## env
 
@@ -110,7 +112,24 @@ pansy --env.NODE_ENV production
 
 ## extendConfig
 
-- 类型: `function`
+- 类型:
+
+```
+(config: NormalizedConfig, namedParameters: object): NormalizedConfig;
+```
+
+关于[NormalizedConfig](https://github.com/walrusjs/pansy/blob/master/src/types.ts)
+
+### 参数
+
+- config
+
+- namedParameters: object
+
+```
+format: Format
+input: string[] | object
+```
 
 扩展 Pansy 配置
 
@@ -132,7 +151,7 @@ pansy --env.NODE_ENV production
 (string | RegExp | function)[]
 ```
 
-排除特定模块
+引入`node modules`模块时，可用来指定排除特定模块
 
 ## globals
 

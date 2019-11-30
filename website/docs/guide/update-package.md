@@ -7,6 +7,7 @@
 - `main`：每种环境的默认文件，通常指向 CommonJS 文件。
 - `module`：支持 ES 模块的工具的默认文件。您应该尽可能使用`Pansy`生成的 ESM 文件。
 - `unpkg`：`unpkg.com`的默认文件，main 的后备文件。您应该将其指向`umd`或`iife`捆绑包。
+- `jsdelivr`: 和`unpkg`一样，用于 jsdelivr.com.
 
 ## 指定包含的文件
 
