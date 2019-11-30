@@ -1,4 +1,4 @@
-import { DEFAULT_VALUE } from './config';
+import { DEFAULT_VALUE } from '@/config';
 
 interface Person {
   firstName: string;

@@ -109,6 +109,7 @@ export default async function createRollupConfig(
       config.plugins.alias !== false &&
       merge(
         {
+          resolve: ['.tsx', '.ts', '.jsx', '.js', '.less', '.css', 'scss'],
           entries: {
             '@': resolveRootDir('src')
           }
