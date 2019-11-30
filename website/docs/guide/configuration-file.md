@@ -22,7 +22,7 @@ Pansy 公开了`Config`可用于配置的类型检查：
 import { Config } from '@pansy/cli';
 
 const config: Config = {
-  input: 'src/index.js'
+  input: 'src/main.ts'
 };
 
 export default config;

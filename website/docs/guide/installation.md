@@ -1,6 +1,6 @@
 # 安装
 
-pansy 需要[Node.js](https://nodejs.org/en/)或更高版本
+pansy 需要[Node 8](https://nodejs.org/en/)或更高版本
 
 ```bash
 # 检查Node版本
@@ -11,7 +11,7 @@ node -v
 
 ```bash
 cd your-project
-npm i @walrus/pansy --dev
+npm install @walrus/pansy --save --dev
 ```
 
 也可以使用 yarn 安装

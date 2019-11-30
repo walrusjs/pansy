@@ -16,7 +16,7 @@ footer: MIT Licensed | Copyright © 2019 Walrus
   </div>
   <div class="feature">
     <h2>功能强大</h2>
-    <p>内置支持 CSS、Sass、Stylus、Less、CSS modules、Typescript、React、Vue。</p>
+    <p>内置支持 CSS、Sass、Stylus、Less、CssModule、Typescript、React、Vue。</p>
   </div>
 </div>
 

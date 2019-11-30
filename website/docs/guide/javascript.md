@@ -45,11 +45,7 @@ module.exports = {
 
 ## TypeScript
 
-当入口文件以`.ts`扩展名结尾时，我们会自动使用`rollup-plugin-typescript2`, 但是必须安装`typescript`才能使其正常工作。
-
-```bash
-yarn add typescript --dev
-```
+当入口文件以`.ts`扩展名结尾时，我们会自动使用`rollup-plugin-typescript2`进行编译。
 
 ## 将 Babel 与 TypeScript 一起使用
 
