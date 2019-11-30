@@ -5,13 +5,13 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "build": "rm -rf dist && node ../../lib/cli"
+    "build": "node ../../lib/cli"
   },
   "dependencies": {
-    "rollup-plugin-vue": "5.1.1",
     "vue": "^2.6.10"
   },
   "devDependencies": {
+    "rollup-plugin-vue": "5.1.1",
     "vue-template-compiler": "^2.6.10"
   }
 }
