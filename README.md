@@ -21,6 +21,10 @@ A zero configuration library bundler.
 - 🚨 友好的错误记录。
 - 💻 使用 TypeScript 编写
 
+## 📝 文档
+
+https://pansy.now.sh
+
 ## 📦 安装
 
 - npm 安装
@@ -56,10 +60,6 @@ pansy
 ```
 
 **注意:** pansy 会自动依次尝试读取`src/index.tsx`、`src/index.ts`、`src/index.jsx`、`sec/index.js`，如入口文件是上面四个文件，则无须设置。
-
-## 📝 文档
-
-https://pansy.now.sh
 
 ## ⌨️ 本地开发
 
