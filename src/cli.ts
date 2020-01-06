@@ -20,7 +20,7 @@ cli
   .option('--format <format>', 'Output format (cjs | umd | es  | iife), can be used multiple times')
   .option('--input.* [file]', 'An object mapping names to entry points')
   .option('-d, --out-dir <outDir>', 'Output directory', { default: 'dist' })
-  .option('--clear-output', 'Clear output directory', { default: true })
+  .option('--no-clear-output', 'Disable clear output directory')
   .option('--disable-type-check', 'disable type check', { default: false })
   .option('--root-dir <rootDir>', 'The root directory to resolve files from')
   .option('--file-name <name>', 'Set the file name for output files')
